@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+#Pasta com os arquivos executaveis do c++
+/src/output
