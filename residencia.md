@@ -9,3 +9,5 @@
 ## Expectativas:
 
 ### Tenho como expectativa conseguir uma vage no mercado de trabalhoa após o fim da residência.
+
+#OK
