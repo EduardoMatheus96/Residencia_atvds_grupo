@@ -1,0 +1,1 @@
+Giuseppe Mota graduando em engenharia de producao pela UESC, estudante em desenvolvimento de software pela Residencia TIC 18.
