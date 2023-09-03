@@ -28,6 +28,7 @@ int main() {
     return 0;
 }
 
+// Versão com float
 
 #include <iostream>
 using namespace std;
