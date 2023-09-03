@@ -31,12 +31,7 @@ int main() {
     cin >> geneticInfo;
 
     // Parte (b): Contagem de genes presentes
-    int genesPresentes = 0;
-    for (int i = 0; i < 8; ++i) {
-        if (geneticInfo & (1 << i)) {
-            genesPresentes++;
-        }
-    }
+    int genesPresentes = __builtin_popcount(geneticInfo);
     cout << "Número de genes presentes: " << genesPresentes << endl;
 
     // Parte (c): Verificação de um gene específico

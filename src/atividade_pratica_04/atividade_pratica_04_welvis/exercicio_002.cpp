@@ -29,18 +29,27 @@ Exercício 2: Manipulação de variáveis de tipo caractere e explorando o uso d
             
 */
 
-
 #include <iostream>
 using namespace std;
 
 int main() {
+    char c = '0';
+
     // Imprimir caracteres numéricos e seus códigos numéricos usando cout
-    for (char c = '0'; c <= '9'; ++c) {
-        cout << "'" << c << "' - " << static_cast<int>(c) << endl;
-    }
+    cout << "'" << c++ << "' - " << static_cast<int>(c - 1) << endl;
+    cout << "'" << c++ << "' - " << static_cast<int>(c - 1) << endl;
+    cout << "'" << c++ << "' - " << static_cast<int>(c - 1) << endl;
+    cout << "'" << c++ << "' - " << static_cast<int>(c - 1) << endl;
+    cout << "'" << c++ << "' - " << static_cast<int>(c - 1) << endl;
+    cout << "'" << c++ << "' - " << static_cast<int>(c - 1) << endl;
+    cout << "'" << c++ << "' - " << static_cast<int>(c - 1) << endl;
+    cout << "'" << c++ << "' - " << static_cast<int>(c - 1) << endl;
+    cout << "'" << c++ << "' - " << static_cast<int>(c - 1) << endl;
+    cout << "'" << c << "' - " << static_cast<int>(c) << endl;
 
     return 0;
 }
+
 
 /*
 
@@ -54,17 +63,23 @@ int main() {
 using namespace std;
 
 int main() {
+    char c = '0';
+
     // Imprimir caracteres numéricos e seus códigos numéricos em decimal, octal e hexadecimal
-    for (char c = '0'; c <= '9'; ++c) {
-        cout << "'" << c << "' - "
-                  << dec << static_cast<int>(c) << " (decimal), "
-                  << oct << static_cast<int>(c) << " (octal), "
-                  << hex << uppercase << static_cast<int>(c) << " (hexadecimal)"
-                  << endl;
-    }
+    cout << "'" << c++ << "' - " << dec << static_cast<int>(c - 1) << " (decimal), " << oct << static_cast<int>(c - 1) << " (octal), " << hex << uppercase << static_cast<int>(c - 1) << " (hexadecimal)" << endl;
+    cout << "'" << c++ << "' - " << dec << static_cast<int>(c - 1) << " (decimal), " << oct << static_cast<int>(c - 1) << " (octal), " << hex << uppercase << static_cast<int>(c - 1) << " (hexadecimal)" << endl;
+    cout << "'" << c++ << "' - " << dec << static_cast<int>(c - 1) << " (decimal), " << oct << static_cast<int>(c - 1) << " (octal), " << hex << uppercase << static_cast<int>(c - 1) << " (hexadecimal)" << endl;
+    cout << "'" << c++ << "' - " << dec << static_cast<int>(c - 1) << " (decimal), " << oct << static_cast<int>(c - 1) << " (octal), " << hex << uppercase << static_cast<int>(c - 1) << " (hexadecimal)" << endl;
+    cout << "'" << c++ << "' - " << dec << static_cast<int>(c - 1) << " (decimal), " << oct << static_cast<int>(c - 1) << " (octal), " << hex << uppercase << static_cast<int>(c - 1) << " (hexadecimal)" << endl;
+    cout << "'" << c++ << "' - " << dec << static_cast<int>(c - 1) << " (decimal), " << oct << static_cast<int>(c - 1) << " (octal), " << hex << uppercase << static_cast<int>(c - 1) << " (hexadecimal)" << endl;
+    cout << "'" << c++ << "' - " << dec << static_cast<int>(c - 1) << " (decimal), " << oct << static_cast<int>(c - 1) << " (octal), " << hex << uppercase << static_cast<int>(c - 1) << " (hexadecimal)" << endl;
+    cout << "'" << c++ << "' - " << dec << static_cast<int>(c - 1) << " (decimal), " << oct << static_cast<int>(c - 1) << " (octal), " << hex << uppercase << static_cast<int>(c - 1) << " (hexadecimal)" << endl;
+    cout << "'" << c++ << "' - " << dec << static_cast<int>(c - 1) << " (decimal), " << oct << static_cast<int>(c - 1) << " (octal), " << hex << uppercase << static_cast<int>(c - 1) << " (hexadecimal)" << endl;
+    cout << "'" << c << "' - " << dec << static_cast<int>(c) << " (decimal), " << oct << static_cast<int>(c) << " (octal), " << hex << uppercase << static_cast<int>(c) << " (hexadecimal)" << endl;
 
     return 0;
 }
+
 
 /*
 
