@@ -1,5 +1,5 @@
 #include <iostream>
-#include <iomanip> // Para definir a precisão decimal na impressão
+#include <iomanip> 
 
 using namespace std;
 

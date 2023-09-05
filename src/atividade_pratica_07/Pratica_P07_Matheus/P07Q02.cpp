@@ -10,14 +10,12 @@ int main() {
 
     originalNum = num;
 
-    // Reverter o número
     while (num > 0) {
         remainder = num % 10;
         reversedNum = reversedNum * 10 + remainder;
         num /= 10;
     }
 
-    // Verificar se o número original é igual ao número revertido
     if (originalNum == reversedNum) {
         cout << "É um número palíndromo." << endl;
     } else {
