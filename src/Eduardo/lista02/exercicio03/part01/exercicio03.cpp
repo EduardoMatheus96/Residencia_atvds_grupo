@@ -63,7 +63,7 @@ int main(void)
     mesExtenso["11"] = "novembro";
     mesExtenso["12"] = "dezembro";
 
-    map<string, string>::iterator it;
+    // map<string, string>::iterator it;
     cout 
     << dia
     << " de "
@@ -72,7 +72,5 @@ int main(void)
     << ano
     << endl;
     
-
-
     return 0;
 }
