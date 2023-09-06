@@ -1,6 +1,8 @@
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <string>
+#include <locale>
 using namespace std;
 
 int main(void) {
@@ -69,6 +71,17 @@ int main(void) {
     << static_cast<int>(a)
     << "\n\n"
     <<endl;
+
+    
+    //  wcout.imbue(locale("pt_BR.UTF-8"));
+    //  setlocale(LC_ALL, "");
+    // locale::global(locale(""));
+    wchar_t chEspecial;
+
+     wcout << "Insira o caracter especial: ";
+     wcin >> chEspecial;
+     wcout << "Caracter especial: " << chEspecial << endl;
+
     
     return 0;
 }
