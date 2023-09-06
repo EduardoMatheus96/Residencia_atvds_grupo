@@ -1,25 +1,25 @@
 #include <stdio.h>
 #include <string>
 
-int isValidDate(int day, int month, int year) {
-    if (year < 0 || month < 1 || month > 12 || day < 1) {
+int isValidDate(int dia, int mes, int ano) {
+    if (ano < 0 || mes < 1 || mes > 12 || dia < 1) {
         return 0; 
     }
 
-    int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int diasnomes[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-        daysInMonth[2] = 29; 
+    if ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)) {
+        diasnomes[2] = 29; 
     }
-    return day <= daysInMonth[month];
+    return dia <= diasnomes[mes];
 }
 
-void printMonth(int month) {
-    char *months[] = {
+void printmes(int mes) {
+    char *meses[] = {
         "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
         "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
     };
-    printf("%s", months[month - 1]);
+    printf("%s", meses[mes - 1]);
 }
 
 int main() {
@@ -30,7 +30,7 @@ int main() {
 
     if (isValidDate(dia, mes, ano)) {
         printf("%d de ", dia);
-        printMonth(mes);
+        printmes(mes);
         printf(" de %d\n", ano);
         printf("Data válida.\n");
     } else {
