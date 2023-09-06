@@ -33,3 +33,6 @@
 
 #Pasta com os arquivos executaveis do c++
 /src/output*
+src/atividade_pratica_10/output
+src/atividade_pratica_04/output
+.vscode
