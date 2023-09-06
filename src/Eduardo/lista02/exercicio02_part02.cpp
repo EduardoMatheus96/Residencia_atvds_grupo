@@ -13,7 +13,7 @@ int main(void){
         if(temps[i] > max){
             max = temps[i];  
         }
-        if(temps[i] < min){
+        else if(temps[i] < min){
             min = temps[i];
         }
         tempMedia += temps[i]; 
@@ -40,12 +40,11 @@ int main(void){
         if (temps[i] > tempMedia){
             tempsOneAfter[i] = temps[i]++;
         }
-        if (temps[i] == tempMedia)
+        else if (temps[i] == tempMedia)
         {
             tempsOneAfter[i] = temps[i];
         }
-        
-        if (temps[i] < tempMedia){
+        else if (temps[i] < tempMedia){
             tempsOneAfter[i] = temps[i] - 2;
         }
     }
