@@ -26,6 +26,7 @@ void bubbleSort(vector<string> &nomes, vector<float> &notas) {
 
 int main() {
     int N;
+    char excluirAluno;
     cout << "Digite o limite de alunos (N): ";
     cin >> N;
 
@@ -55,15 +56,17 @@ int main() {
         nomes.push_back(nome);
         notas.push_back(nota1);
         notas.push_back(nota2);
-
+        
         cout << "Deseja incluir mais alunos (s/n)? ";
         cin >> incluirAluno;
     }
 
     do {
-        char excluirAluno;
+        
         cout << "Deseja excluir algum aluno (s/n)? ";
-        cin >> excluirAluno;
+        fflush(stdin);
+        scanf("$%c", &excluirAluno);
+        // cin >> excluirAluno;
 
         if (excluirAluno == 's') {
             string nomeParaExcluir;
@@ -100,7 +103,7 @@ int main() {
     }
 
     return 0;
-
+}
 //Correção do terceiro codigo
 /*
 #include <iostream>

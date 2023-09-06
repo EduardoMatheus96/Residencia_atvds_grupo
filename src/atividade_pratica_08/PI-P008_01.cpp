@@ -1,4 +1,6 @@
 /*
+//Exercício 2 A, B e C
+
 #include <iostream>
 #include <cstdlib> 
 #include <ctime>   
@@ -55,7 +57,6 @@ int main()
     srand(time(NULL));
     int val[100];
     int cont[20] = {0};
-    //int max, i;
     
 
     for (int i = 0; i < 100; i++)
@@ -80,7 +81,7 @@ int main()
         int max = 0;
         int min = 100;
         
-        for(int i = 0; i < 20; i++)
+    for(int i = 0; i < 20; i++)
         {
             if(max < cont[i])
             {
@@ -96,7 +97,7 @@ int main()
         cout << "Qual o numero que menos se repete " << min << endl;
 
         cout << "O numero que mais se repete sao: " << endl;
-        for(int i = 0; i < 20; i++)
+    for(int i = 0; i < 20; i++)
         {
             if(cont[i] == max)
             {
@@ -104,6 +105,6 @@ int main()
             }
         }
         
-        return 0;
+    return 0;
 
 }
