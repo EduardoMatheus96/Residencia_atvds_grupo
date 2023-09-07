@@ -26,15 +26,16 @@ int main() {
     int dia, mes, ano;
 
     printf("Digite uma data no formato dia/mes/ano: ");
-    scanf("%d/%d/%d", &dia, &mes, &ano);
 
+    scanf("%d/%d/%d", &dia, &mes, &ano);   
+    
     if (isValidDate(dia, mes, ano)) {
         printf("%d de ", dia);
         printmes(mes);
         printf(" de %d\n", ano);
-        printf("Data válida.\n");
+        printf("Data valida.\n");
     } else {
-        printf("Data inválida.\n");
+        printf("Data invalida.\n");
     }
 
     return 0;
