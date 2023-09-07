@@ -1,40 +1,105 @@
-
-//Questão 5. a) e b)
-
 #include <iostream>
 
 using namespace std;
 
-int main() {
-    unsigned char geneP;
+int main(void)
 
-    cout << "Digite a informacao genetica da planta: ";
-    cin >> geneP;
+{
+   unsigned short int genInt; 
+   unsigned char gen;
 
-    int genesPresentes = 0;
-    for (int i = 0; i < 8; i++) {
-        if ((geneP >> i) & 1) {
-            genesPresentes++;
-        }
+   cout << "Entre com a informção de gene da planta a ser conferida: " <<endl;
+   cin >> genInt;
+
+   unsigned char genTest = 0b1;
+    if (genInt >= 1 && genInt <= 8) {
+    gen = genInt;
+
+    bool gen1 = (gen & genTest);
+    if (gen1 == 0)
+    {
+       cout << "O gene 1 nao esta presente!" << endl;
+       genTest = genTest << 1;
+    }
+    else{
+        cout << "O gene 1 esta presente!" << endl;
+        genTest = genTest << 1;
+    }
+   bool gen2 = (gen & genTest);
+    if (gen2 == 0)
+    {
+       cout << "O gene 2 nao esta presente!" << endl;
+       genTest = genTest << 1;
+    }
+    else{
+        cout << "O gene 2 esta presente!" << endl;
+        genTest = genTest << 1;
+    }
+   bool gen3 = (gen & genTest);
+    if (gen3 == 0)
+    {
+       cout << "O gene 3 nao esta presente!" << endl;
+       genTest = genTest << 1;
+    }
+    else{
+        cout << "O gene 3 esta presente!" << endl;
+        genTest = genTest << 1;
+    }
+   bool gen4 = (gen & genTest);
+    if (gen4 == 0)
+    {
+       cout << "O gene 4 nao esta presente!" << endl;
+       genTest = genTest << 1;
+    }
+    else{
+        cout << "O gene 4 esta presente!" << endl;
+        genTest = genTest << 1;
+    }
+   bool gen5 = (gen & genTest);
+    if (gen5 == 0)
+    {
+       cout << "O gene 5 nao esta presente! " << endl;
+       genTest = genTest << 1;
+    }
+    else{
+        cout << "O gene 5 esta presente!" << endl;
+        genTest = genTest << 1;
+    }
+   bool gen6 = (gen & genTest);
+    if (gen6 == 0)
+    {
+       cout << "O gene 6 nao esta presente!" << endl;
+       genTest = genTest << 1;
+    }
+    else{
+        cout << "O gene 6 esta presente!" << endl;
+        genTest = genTest << 1;
+    }
+   bool gen7 = (gen & genTest);
+    if (gen7 == 0)
+    {
+       cout << "O gene 7 nao esta presente!" << endl;
+       genTest = genTest << 1;
+    }
+    else{
+        cout << "O gene 7 esta presente!" << endl;
+        genTest = genTest << 1;
+    }
+   bool gen8 = (gen & genTest);
+    if (gen8 == 0)
+    {
+       cout << "O gene 8 nao esta presente!" << endl;
+       genTest = genTest << 1;
+    }
+    else{
+        cout << "O gene 8 esta presente!" << endl;
+        genTest = genTest << 1;
+    }
+    }
+    else {
+        cout << "Número de gene inválido. Digite um número entre 1 e 8." << endl;
     }
 
-    cout << "Genes presentes na planta: " << genesPresentes << endl;
+ return 0;
 
-    // Questão 5. c)
-    int numeroGene;
-    cout << "Digite o numero do gene que deseja verificar (entre 1 e 8): ";
-    cin >> numeroGene;
-
-    if (numeroGene >= 1 && numeroGene <= 8) {
-        bool genePresente = ((geneP >> (numeroGene - 1)) & 1);
-        if (genePresente) {
-            cout << "O gene " << numeroGene << " esta presente nesta planta." << endl;
-        } else {
-            cout << "O gene " << numeroGene << " nao esta presente nesta planta." << endl;
-        }
-    } else {
-        cout << "Numero de gene invalido. Digite um numero entre 1 e 8." << endl;
-    }
-
-    return 0;
 }
