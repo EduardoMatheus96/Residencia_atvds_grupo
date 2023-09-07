@@ -1,0 +1,7 @@
+Instale o Tema Drácula na sua IDE. Escolha qual o melhor tema de sua preferência.
+Descreva como você fez para configurar o tema da sua IDE.
+
+
+
+Para configurar o tema, apenas foi feito o download no ícone de extensões do vs-code, e após isso foi feita 
+a seleção do tema na paleta de temas que aparece automaticamente após a instalação.
