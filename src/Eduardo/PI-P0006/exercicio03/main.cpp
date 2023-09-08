@@ -1,7 +1,6 @@
 #include <iostream>
-#include "parte01/head_parte01.h"
-#include "parte02/head_parte02.h"
-#include "parte03/head_parte03.h"
+#include "parte01/header_parte01.h"
+#include "parte02/header_parte02.h"
 
 using namespace std;
 
@@ -13,10 +12,9 @@ int main(void)
         cout << "_________________________________________________________ \n\n"
              << endl;
         cout << "Menu:" << endl;
-        cout << "Para acessar a primeira parte do Exercicio 4 digite 1: " << endl;
-        cout << "Para acessar a segunda parte do Exercicio 4 digite 2: " << endl;
-        cout << "Para acessar a terceira parte do Exercicio 4 digite 3: " << endl;
-        cout << "Para sair do Exercicio 4 digite 0: " << endl;
+        cout << "Para acessar a primeira parte do Exercicio 3 digite 1: " << endl;
+        cout << "Para acessar a segunda parte do Exercicio 3 digite 2: " << endl;
+        cout << "Para sair do Exercicio 3 digite 0: " << endl;
         cout << "Informe sua escolha: ";
         cin >> saida;
         cout << endl;
@@ -28,11 +26,9 @@ int main(void)
         else if (saida == '2')
         {
             parteDois();
-        }else if (saida == '3')
-        {
-            parteTres();
         }
 
     } while (saida != '0');
+
     return 0;
 }
