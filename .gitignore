@@ -31,9 +31,6 @@
 *.out
 *.app
 
-# Todos os arquivos sem extensão
-*.*
-
 #Pasta com os arquivos executaveis do c++
 /src/output*
 /src/atividade_pratica_04/pratica_04_Eduardo/output*
