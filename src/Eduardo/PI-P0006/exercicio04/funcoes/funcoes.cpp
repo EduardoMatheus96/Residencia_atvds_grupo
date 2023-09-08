@@ -1,7 +1,13 @@
 #include <iostream>
 #include <cmath>
+#include <map>
 
 using namespace std;
+
+void fazNada()
+{
+    return;
+}
 
 double soma(double a, double b)
 {
@@ -37,3 +43,34 @@ double circunferencia(double raio){
 double area(double raio){
     return 3.14 * (raio * raio);
 }
+
+void imprimeQuadrante(int quadrante, double x, double y)
+{
+    map<int, string> meuQuadrante;
+
+    meuQuadrante[1] = "Primeiro quadrante";
+    meuQuadrante[2] = "Segundo quadrante";
+    meuQuadrante[3] = "Terceiro quadrante";
+    meuQuadrante[4] = "Quarto quadrante";
+    meuQuadrante[5] = "Sobre um dos eixos";
+
+    cout << "O plano ("
+    << x
+    << ", "
+    << y
+    << ") "
+    << "Pertence ao: "
+    << meuQuadrante[quadrante]
+    << endl;
+}
+
+void quadrante(double x, double y)
+{
+    (x > 0 && y > 0) ? imprimeQuadrante(1, x, y) 
+    : (x < 0 && y > 0) ? imprimeQuadrante(2, x, y)
+    : (x < 0 && y < 0) ? imprimeQuadrante(3, x, y)
+    : (x > 0 && y < 0) ? imprimeQuadrante(4, x, y)
+    : (x == 0 || y == 0) ? imprimeQuadrante(5, x, y)
+    : fazNada();
+}
+
