@@ -27,6 +27,7 @@ int main() {
 #include <iostream>
 #include <iomanip>
 #include <locale.h>
+
 using namespace std;
 
 int main() {

@@ -52,7 +52,6 @@ int main() {
 }
 
 
-
 //Questão 4. f) Identificando diferença entre double e long double
 
 #include <iostream>

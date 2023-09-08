@@ -50,7 +50,7 @@ int main() {
     unsigned int ui = 0;
     short int si = 0;
     unsigned short int usi = 0;
-    unsigned long int uli = numeric_limits<unsigned long int>::max();  // como pedido, atribui, o maior valor que ele pode receber.
+    unsigned long int uli = numeric_limits<unsigned long int>::max();  // como pedido no problema, atribuído o maior valor que ele pode receber.
     long int li = uli;
     cout << "Tamanhos e limites dos tipos inteiros:" << endl;
 
