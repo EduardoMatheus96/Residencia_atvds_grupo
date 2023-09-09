@@ -1,8 +1,9 @@
 #include <iostream>
+#include "../../funcoes/head_funcoes.h"
 
 using namespace std;
 
 void exercicio04()
 {
-    cout << "OLA MUNDO !!" << endl;
+    verificaPrimo();
 }
