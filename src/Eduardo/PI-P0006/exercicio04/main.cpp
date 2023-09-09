@@ -5,34 +5,48 @@
 
 using namespace std;
 
-int main(void)
+// Códigos de escape ANSI para cores de texto
+const string RESET_COLOR = "\033[0m";
+const string RED_TEXT = "\033[31m";
+const string GREEN_TEXT = "\033[32m";
+const string YELLOW_TEXT = "\033[33m";
+
+int main()
 {
-    char saida;
+    char escolha;
+
     do
     {
         cout << "_________________________________________________________ \n\n"
              << endl;
         cout << "Menu:" << endl;
-        cout << "Para acessar a primeira parte do Exercicio 4 digite 1: " << endl;
-        cout << "Para acessar a segunda parte do Exercicio 4 digite 2: " << endl;
-        cout << "Para acessar a terceira parte do Exercicio 4 digite 3: " << endl;
-        cout << "Para sair do Exercicio 4 digite 0: " << endl;
+        cout << GREEN_TEXT << "1. Acessar a primeira parte do Exercicio 4" << RESET_COLOR << endl;
+        cout << YELLOW_TEXT << "2. Acessar a segunda parte do Exercicio 4" << RESET_COLOR << endl;
+        cout << RED_TEXT << "3. Acessar a terceira parte do Exercicio 4" << RESET_COLOR << endl;
+        cout << "0. Sair do Exercicio 4" << endl;
         cout << "Informe sua escolha: ";
-        cin >> saida;
+        cin >> escolha;
         cout << endl;
 
-        if (saida == '1')
+        switch (escolha)
         {
+        case '1':
             parteUm();
-        }
-        else if (saida == '2')
-        {
+            break;
+        case '2':
             parteDois();
-        }else if (saida == '3')
-        {
+            break;
+        case '3':
             parteTres();
+            break;
+        case '0':
+            cout << "Saindo do Exercicio 4. Até mais!" << endl;
+            break;
+        default:
+            cout << "Escolha inválida. Por favor, tente novamente." << endl;
         }
 
-    } while (saida != '0');
+    } while (escolha != '0');
+
     return 0;
 }
