@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++2a
+CXXFLAGS = -std=c++2a -lncurses
 SRC_DIR = ../exercicio04
 BUILD_DIR = outputs
 TARGET = exercicio04
