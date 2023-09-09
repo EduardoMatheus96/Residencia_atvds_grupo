@@ -6,5 +6,8 @@ void imprimeAte100();
 void imprimeEhPalindromo(bool isPalindromo);
 void palindromo(int numero);
 void divisores(int numero);
+void imprimePrimo(int numero);
+bool verificaDivisores(int numero);
+void verificaPrimo();
 
 #endif
