@@ -62,3 +62,33 @@ void divisores(int numero)
         }
     }
 }
+
+void imprimePrimo(int numero)
+{
+    cout << "Primo - " << numero << endl;
+}
+
+int verificaDivisores(int numero)
+{
+    int cont = 0;
+    for (int i = 1; i < (numero/2); i++)
+    {
+        numero % i == 0 ? cont++ : cont = cont;
+        if(cont > 1) return 0;
+    }
+    return cont;
+    
+}
+
+void verificaPrimo()
+{
+    imprimePrimo(0);
+    imprimePrimo(1);
+    imprimePrimo(2);
+    imprimePrimo(3);
+    for (int i = 5; i < 100; i += 2)
+    {
+        if(verificaDivisores(i) == 1) imprimePrimo(i);
+    }
+    
+}
