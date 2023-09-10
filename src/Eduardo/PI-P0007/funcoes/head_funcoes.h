@@ -9,5 +9,7 @@ void divisores(int numero);
 void imprimePrimo(int numero);
 bool verificaDivisores(int numero);
 void verificaPrimo();
+void menuJogo();
+void jogoAdivinhacao();
 
 #endif
