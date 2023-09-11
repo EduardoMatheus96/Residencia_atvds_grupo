@@ -26,7 +26,7 @@ int main() {
     cout << "\nPadrão 2: Quadrado diagonal para baixo preenchido" << endl;
     for (int i = 0; i < altura; i++) {
         for (int j = 0; j < altura; j++) {
-            if (j >= i) {
+            if (j <= i) {
                 cout << "* ";
             } else {
                 cout << "  ";
