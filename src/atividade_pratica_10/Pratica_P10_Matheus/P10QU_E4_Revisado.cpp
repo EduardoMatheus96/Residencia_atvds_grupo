@@ -142,11 +142,23 @@ int main()
 
                     cout << "Digite a segunda nota do aluno: ";
                     cin >> nota2;
-                    nomes.push_back(nome);
-                    notas.push_back(nota1);
-                    notas.push_back(nota2);
 
-                    bubbleSlide(nomes, notas);
+                    for (size_t i = 0; i < nomes.size(); i++)
+                    {
+                        if(nome < nomes.at(i))
+                        {
+                            nomes.insert(nomes.begin() + i, nome);
+                            notas.insert(notas.begin() + (2 * i), nota1);
+                            notas.insert(notas.begin() + ((2 * i) + 1), nota2);
+                            break;
+
+                        }
+                    }
+                    // nomes.push_back(nome);
+                    // notas.push_back(nota1);
+                    // notas.push_back(nota2);
+
+                    // bubbleSlide(nomes, notas);
                 }
             }
             else
