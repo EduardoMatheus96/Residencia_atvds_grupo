@@ -27,7 +27,7 @@ int main(void)
         ano += data.at(7);
         ano += data.at(8);
         ano += data.at(9);
-        if (data.size() != 10)
+        if (data.size() < 6 || data.size() > 10)
         {
             cout << "A data nao é valida !!!" << endl;
             isDataValid = 1;
