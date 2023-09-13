@@ -4,40 +4,61 @@
 
 using namespace std;
 
-struct Point
+struct Produto
 {
-    double x = 0;
-    double y = 0;
-    string nome = "Ponto";
+    string nomeProduto;
+    unsigned int qntProduto;
+    double valorUnitario;
 };
 
-union Values
+void adicionarProduto(Produto *prod, string nome, int qnt, double valor, vector<Produto> *estoque)
 {
-    int iValue;
-    double fValue;
-} valor;
+    prod->nomeProduto = nome;
+    prod->qntProduto = qnt;
+    prod->valorUnitario = valor;
+    estoque->push_back(*prod);
+}
 
-int main(void)
+void atualizarEstoque(Produto *prod)
 {
-    Point p1;
-    p1.x = 10;
-    p1.y = 20;
-    p1.nome = "centro";
+    prod->qntProduto--;
+}
 
-    Point p2 = {5, 15, "Vértice"};
-    Point p3;
+double calcularTotal(vector<Produto *> estoque)
+{
+    double total = 0;
+    for (size_t i = 0; i < estoque.size(); i++)
+    {
+        total += estoque[i]->qntProduto;
+    }
+    return total;
+}
 
-    cout << p1.nome << " = "
-         << "p1.x: " << p1.x << ", p1.y: " << p1.y << endl;
+void listarProdutos(vector<Produto *> estoque)
+{
+    for (size_t i = 0; i < estoque.size(); i++)
+    {
+        cout
+            << "Produto "
+            << i
+            << ": "
+            << estoque[i]->nomeProduto
+            << "Quantidade: "
+            << estoque[i]->qntProduto
+            << "Valor unitario: "
+            << estoque[i]->valorUnitario
+            << endl;
+    }
+}
 
-    cout << p2.nome << " = "
-         << "p2.x: " << p2.x << ", p2.y: " << p2.y << endl;
+int main(int argc, const char **argv)
+{
+    Produto produto;
+    vector<Produto> estoque;
+    adicionarProduto(&produto, "Celular", 7, 3000, &estoque);
+    adicionarProduto(&produto, "Laptop", 3, 5000, &estoque);
 
-    cout << p3.nome << " = "
-         << "p3.x: " << p3.x << ", p3.y: " << p3.y << endl;
-
-    valor.iValue = 5;
-    cout << "Valor = " << valor.iValue;
- 
+    cout << estoque[0].nomeProduto << endl;
+    cout << estoque[1].nomeProduto << endl;
     return 0;
 }
