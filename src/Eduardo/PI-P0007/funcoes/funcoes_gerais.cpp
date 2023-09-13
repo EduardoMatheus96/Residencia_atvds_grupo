@@ -163,7 +163,7 @@ void menuJogo()
     const string BLUE_TEXT = "\033[34m";
     const string GREEN_TEXT = "\033[32m";
     const string RED_TEXT = "\033[31m";
-    do
+    do                                                                                                                                                      
     {
         cout << YELLOW_TEXT << "_________________________________________________________ \n\n"
              << endl;
