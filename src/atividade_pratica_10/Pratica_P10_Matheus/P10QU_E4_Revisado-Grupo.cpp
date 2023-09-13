@@ -5,32 +5,58 @@
 
 using namespace std;
 
-void bubbleSort(vector<string> &nomes, vector<float> &notas) {
-    int n = nomes.size();
-
-    for (int i = 0; i < n - 1; ++i) {
-        for (int j = 0; j < n - i - 1; ++j) {
-            if (nomes[j] > nomes[j + 1]) {
-                // Troque os nomes
+void bubbleSlide(vector<string> &nomes, vector<float> &notas)
+{
+    int n = nomes.size() - 1;
+    bool trocou;
+    do
+    {
+        trocou = false;
+        for (int j = 0; j < n; j++)
+        {
+            if (nomes.at(j) > nomes.at(j + 1))
+            {
                 swap(nomes[j], nomes[j + 1]);
 
-                // Mantenha as notas correspondentes na mesma ordem
+                // Manter notas correspondentes e na mesma ordem
                 swap(notas[2 * j], notas[2 * j + 2]);
                 swap(notas[2 * j + 1], notas[2 * j + 3]);
+                trocou = true;
             }
         }
-    }
+        n--;
+    } while (trocou);
 }
 
-float calcularMedia(float nota1, float nota2) {
+// void bubbleSort(vector<string> &nomes, vector<float> &notas) {
+//     int n = nomes.size();
+
+//     for (int i = 0; i < n - 1; ++i) {
+//         for (int j = 0; j < n - i - 1; ++j) {
+//             if (nomes[j] > nomes[j + 1]) {
+//                 // Troque os nomes
+//                 swap(nomes[j], nomes[j + 1]);
+
+//                 // Mantenha as notas correspondentes na mesma ordem
+//                 swap(notas[2 * j], notas[2 * j + 2]);
+//                 swap(notas[2 * j + 1], notas[2 * j + 3]);
+//             }
+//         }
+//     }
+// }
+
+float calcularMedia(float nota1, float nota2)
+{
     return (nota1 + nota2) / 2.0;
 }
 
-int main() {
+int main()
+{
     int N;
     cout << "Digite o limite de alunos (N): ";
     cin >> N;
-    while (N < 1 || N > 100) {
+    while (N < 1 || N > 100)
+    {
         cout << "Digite um valor entre 1 e 100: ";
         cin >> N;
         return 1;
@@ -39,18 +65,23 @@ int main() {
     vector<float> notas;
 
     char incluirAluno = 's';
-    while (incluirAluno == 's') {
-        if (nomes.size() >= N) {
+    while (incluirAluno == 's')
+    {
+        if (nomes.size() >= N)
+        {
             cout << "Limite de alunos atingido." << endl;
             break;
         }
 
         string nome;
-        float nota1, nota2;
+        double nota1, nota2;
 
         cout << "Digite o nome do aluno: ";
         cin.ignore();
         getline(cin, nome);
+        // nome = toupper(nome);
+        transform(nome.begin(), nome.end(), nome.begin(), ::tolower);
+        nome.at(0) = toupper(nome.at(0));
 
         cout << "Digite a primeira nota do aluno: ";
         cin >> nota1;
@@ -61,26 +92,27 @@ int main() {
         nomes.push_back(nome);
         notas.push_back(nota1);
         notas.push_back(nota2);
-
-
     }
 
-    bubbleSort(nomes, notas);
+    bubbleSlide(nomes, notas);
 
     char excluirAluno = 's';
-    while (excluirAluno == 's') {
+    while (excluirAluno == 's')
+    {
         cout << "Deseja excluir algum aluno (s/n)? ";
         cin >> excluirAluno;
 
-        if (excluirAluno == 's') {
+        if (excluirAluno == 's')
+        {
             string nomeParaExcluir;
             cout << "Digite o nome do aluno a ser excluído: ";
             cin.ignore();
             getline(cin, nomeParaExcluir);
 
-            // Encontre o nome na lista e exclua-o
+            // Encontra o nome na lista e permite excluir
             vector<string>::iterator it = find(nomes.begin(), nomes.end(), nomeParaExcluir);
-            if (it != nomes.end()) {
+            if (it != nomes.end())
+            {
                 int index = distance(nomes.begin(), it);
 
                 nomes.erase(nomes.begin() + index);
@@ -90,62 +122,90 @@ int main() {
 
                 cout << "Deseja incluir mais alunos (s/n)? ";
                 cin >> incluirAluno;
-                while (incluirAluno == 's') {
-                string nome;
-                float nota1, nota2;
-                if (nomes.size() >= N) {
-                cout << "Limite de alunos atingido." << endl;
-                break;}
-                cout << "Digite o nome do aluno: ";
-                cin.ignore();
-                getline(cin, nome);
+                while (incluirAluno == 's')
+                {
+                    string nome;
+                    float nota1, nota2;
+                    if (nomes.size() >= N)
+                    {
+                        cout << "Limite de alunos atingido." << endl;
+                        break;
+                    }
+                    cout << "Digite o nome do aluno: ";
+                    cin.ignore();
+                    getline(cin, nome);
+                    transform(nome.begin(), nome.end(), nome.begin(), ::tolower);
+                    nome.at(0) = toupper(nome.at(0));
 
-                cout << "Digite a primeira nota do aluno: ";
-                cin >> nota1;
+                    cout << "Digite a primeira nota do aluno: ";
+                    cin >> nota1;
 
-                cout << "Digite a segunda nota do aluno: ";
-                cin >> nota2;
-            nomes.push_back(nome);
-            notas.push_back(nota1);
-            notas.push_back(nota2);
+                    cout << "Digite a segunda nota do aluno: ";
+                    cin >> nota2;
+
+                    for (size_t i = 0; i < nomes.size(); i++)
+                    {
+                        if(nome < nomes.at(i))
+                        {
+                            nomes.insert(nomes.begin() + i, nome);
+                            notas.insert(notas.begin() + (2 * i), nota1);
+                            notas.insert(notas.begin() + ((2 * i) + 1), nota2);
+                            break;
+
+                        }
+                    }
+                    // nomes.push_back(nome);
+                    // notas.push_back(nota1);
+                    // notas.push_back(nota2);
+
+                    // bubbleSlide(nomes, notas);
+                }
             }
-
-
-            } else {
+            else
+            {
                 cout << "Aluno não encontrado." << endl;
             }
         }
     }
-char alterarNota;
-    do {
+    char alterarNota;
+    do
+    {
         cout << "Deseja alterar alguma nota (s/n)? ";
         cin >> alterarNota;
 
-        if (alterarNota == 's') {
+        if (alterarNota == 's')
+        {
             string nomeParaAlterar;
             cout << "Digite o nome do aluno cuja nota será alterada: ";
             cin.ignore();
             getline(cin, nomeParaAlterar);
 
-            // Encontre o nome na lista
+            // Encontra nome na lista
             vector<string>::iterator it = find(nomes.begin(), nomes.end(), nomeParaAlterar);
-            if (it != nomes.end()) {
+            if (it != nomes.end())
+            {
                 int index = distance(nomes.begin(), it);
 
                 cout << "Notas atuais do aluno " << nomeParaAlterar << ": " << notas[2 * index] << " e " << notas[2 * index + 1] << endl;
 
                 char opcao;
-                do {
+                do
+                {
                     cout << "Alterar a primeira nota (1), a segunda nota (2) ou nenhuma (0)? ";
                     cin >> opcao;
 
-                    if (opcao == '1') {
+                    if (opcao == '1')
+                    {
                         cout << "Digite a nova primeira nota: ";
                         cin >> notas[2 * index];
-                    } else if (opcao == '2') {
+                    }
+                    else if (opcao == '2')
+                    {
                         cout << "Digite a nova segunda nota: ";
                         cin >> notas[2 * index + 1];
-                    } else if (opcao != '0') {
+                    }
+                    else if (opcao != '0')
+                    {
                         cout << "Opção inválida. Use '1', '2' ou '0'." << endl;
                     }
                 } while (opcao != '0');
@@ -156,23 +216,28 @@ char alterarNota;
                 float novaMedia = calcularMedia(notas[2 * index], notas[2 * index + 1]);
 
                 cout << "Média atualizada do aluno " << nomeParaAlterar << ": " << novaMedia << endl;
-                
-                // Verifica se o aluno está aprovado ou reprovado
-                if (novaMedia >= 7.0) {
+
+                // Verifica situação do aluno   
+                if (novaMedia >= 7.0)
+                {
                     cout << "Situação: Aprovado" << endl;
-                } else {
+                }
+                else
+                {
                     cout << "Situação: Reprovado" << endl;
                 }
-
-            } else {
+            }
+            else
+            {
                 cout << "Aluno não encontrado." << endl;
             }
-        } 
-    } while (alterarNota != 'n');   
+        }
+    } while (alterarNota != 'n');
 
-    // Exibir a lista de alunos e notas
+    // Listagem de alunos e notas
     cout << "\nListagem dos alunos e notas ordenados em ordem alfabética:\n";
-    for (size_t i = 0; i < nomes.size(); ++i) {
+    for (size_t i = 0; i < nomes.size(); ++i)
+    {
         cout << "Aluno: " << nomes[i] << endl;
         cout << "Nota 1: " << notas[2 * i] << endl;
         cout << "Nota 2: " << notas[2 * i + 1] << endl;
