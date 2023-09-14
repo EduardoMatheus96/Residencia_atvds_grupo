@@ -1,0 +1,8 @@
+Instale duas extensões de sua preferência. Explique para que servem as extensões
+instaladas e o que mudou na sua IDE após a instalação.
+
+Extensões extra:
+
+Night Owl - Thema para melhorar a coloração do script.
+
+Bracket Pair Color DLW - Ajuda a vizualizar melhor os parentes de cada parte do código.
