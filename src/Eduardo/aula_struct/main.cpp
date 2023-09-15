@@ -51,7 +51,7 @@ void listarProdutos(vector<Produto *> estoque)
     }
 }
 
-int main(int argc, const char **argv)
+int main(void)
 {
     Produto produto;
     vector<Produto> estoque;
