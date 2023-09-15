@@ -11,12 +11,12 @@ struct Produto
     double valorUnitario;
 };
 
-void adicionarProduto(Produto *prod, string nome, int qnt, double valor, vector<Produto> *estoque)
+void adicionarProduto(Produto &prod, string nome, int qnt, double valor, vector<Produto> &estoque)
 {
-    prod->nomeProduto = nome;
-    prod->qntProduto = qnt;
-    prod->valorUnitario = valor;
-    estoque->push_back(*prod);
+    prod.nomeProduto = nome;
+    prod.qntProduto = qnt;
+    prod.valorUnitario = valor;
+    estoque.push_back(prod);
 }
 
 void atualizarEstoque(Produto *prod)
@@ -55,8 +55,8 @@ int main(int argc, const char **argv)
 {
     Produto produto;
     vector<Produto> estoque;
-    adicionarProduto(&produto, "Celular", 7, 3000, &estoque);
-    adicionarProduto(&produto, "Laptop", 3, 5000, &estoque);
+    adicionarProduto(produto, "Celular", 7, 3000, estoque);
+    adicionarProduto(produto, "Laptop", 3, 5000, estoque);
 
     cout << estoque[0].nomeProduto << endl;
     cout << estoque[1].nomeProduto << endl;
