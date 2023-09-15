@@ -33,7 +33,11 @@
 
 #Pasta com os arquivos executaveis do c++
 /src/output*
+<<<<<<< HEAD
 .vscode
 src/Wilton Freire/atividade_pratica_04/output
 src/Wilton Freire/atividade_pratica_08/output
 src/Wilton Freire/atividade_pratica_10/output
+=======
+/src/atividade_pratica_04/pratica_04_Eduardo/output*
+>>>>>>> 531905318cbe254f1c1308c5c2420d69b78896cb
