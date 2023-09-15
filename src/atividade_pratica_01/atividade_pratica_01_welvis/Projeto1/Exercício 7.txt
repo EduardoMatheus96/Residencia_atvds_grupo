@@ -1,5 +1,0 @@
-Anote quais extensões existem instaladas atualmente na sua IDE.
-
-C/C++
-Night Owl
-Bracket Pair Color DLW
