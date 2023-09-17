@@ -11,17 +11,32 @@ Exercício 1:
 */
 
 #include <iostream>
-#include <vector>
-
 using namespace std;
 
+void maxmin(int vetor[], int n, int &maximo, int &minimo) {
+    maximo = vetor[0]; // Define o primeiro elemento como máximo inicialmente
+    minimo = vetor[0]; // Define o primeiro elemento como mínimo inicialmente
 
-int maxmin(vector<int> vetor, int sizeVector){
+    for (int i = 1; i < n; i++) {
+        if (vetor[i] > maximo) {
+            maximo = vetor[i]; // Atualiza o máximo se encontrar um valor maior
+        }
 
+        if (vetor[i] < minimo) {
+            minimo = vetor[i]; // Atualiza o mínimo se encontrar um valor menor
+        }
+    }
 }
 
+int main() {
+    int vetor[] = {5, 2, 9, 1, 7};
+    int n = sizeof(vetor) / sizeof(vetor[0]);
+    int maximo, minimo;
 
-int main(void){
+    maxmin(vetor, n, maximo, minimo);
+
+    cout << "Maximo: " << maximo << endl;
+    cout << "Minimo: " << minimo << endl;
 
     return 0;
 }
