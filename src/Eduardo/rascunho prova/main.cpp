@@ -46,40 +46,6 @@ bool validarCPF(const string &cpf)
             return false;
         }
     }
-
-    // Calcula o primeiro dígito verificador
-    int soma = 0;
-    for (int i = 0; i < 9; ++i)
-    {
-        soma += (cpf[i] - '0') * (10 - i);
-    }
-    int digito1 = 11 - (soma % 11);
-    if (digito1 > 9)
-        digito1 = 0;
-
-    // Verifica o primeiro dígito verificador
-    if (digito1 != (cpf[9] - '0'))
-    {
-        cout << "Cpf inválido insira novamente." << endl;
-        return false;
-    }
-
-    // Calcula o segundo dígito verificador
-    soma = 0;
-    for (int i = 0; i < 10; ++i)
-    {
-        soma += (cpf[i] - '0') * (11 - i);
-    }
-    int digito2 = 11 - (soma % 11);
-    if (digito2 > 9)
-        digito2 = 0;
-
-    // Verifica o segundo dígito verificador
-    if (digito2 != (cpf[10] - '0'))
-    {
-        cout << "Cpf inválido insira novamente." << endl;
-        return false;
-    }
     return true;
 }
 
@@ -93,10 +59,18 @@ bool extrairHora(const string &horaStr, int &horas, int &minutos)
     ss.str(horaStr);
     if (ss >> horas >> delim >> minutos)
     {
-        return true;
+        // Verifica se as horas e minutos estão no intervalo válido
+        if (horas >= 0 && horas < 24 && minutos >= 0 && minutos < 60)
+        {
+            return true;
+        }
     }
-
+    cout << "Hora invalida siga o padrao HH:MM exemplo 22:20" << endl;
     return false;
+}
+
+bool isAnoBissexto(int ano) {
+    return (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
 }
 
 bool extrairData(const string &dataStr, int &dia, int &mes, int &ano)
@@ -104,43 +78,39 @@ bool extrairData(const string &dataStr, int &dia, int &mes, int &ano)
     char delim;
     istringstream ss(dataStr);
 
-    // Tenta extrair a data no formato dd/mm/aaaa
     if (ss >> dia >> delim >> mes >> delim >> ano)
     {
-
-        return true;
-    }
-
-    // Tenta extrair a data no formato 0d/0m/aaaa
-    ss.clear();
-    ss.str(dataStr);
-    if (ss >> ws >> dia >> ws >> delim >> ws >> mes >> ws >> delim >> ws >> ano)
-    {
-
-        return true;
-    }
-
-    // Tenta extrair a data no formato dd/mm/aa
-    ss.clear();
-    ss.str(dataStr);
-    if (ss >> dia >> delim >> mes >> delim >> ano)
-    {
-        if (ano >= 0 && ano <= 99)
+        // Verifica se o mês é válido
+        if (mes >= 1 && mes <= 12)
         {
-            if (ano >= 0 && ano <= 29)
+            // Verifica o número de dias no mês
+            int diasNoMes = 31; // Janeiro, março, maio, julho, agosto, outubro, dezembro têm 31 dias
+
+            if (mes == 4 || mes == 6 || mes == 9 || mes == 11)
             {
-                ano += 2000;
+                diasNoMes = 30; // Abril, junho, setembro, novembro têm 30 dias
             }
-            else
+            else if (mes == 2)
             {
-                ano += 1900;
+                // Fevereiro pode ter 28 ou 29 dias, dependendo se é um ano bissexto
+                if (isAnoBissexto(ano))
+                    diasNoMes = 29;
+                else
+                    diasNoMes = 28;
             }
-            return true;
+
+            // Verifica se o dia está dentro do intervalo válido para o mês
+            if (dia >= 1 && dia <= diasNoMes)
+            {
+                return true;
+            }
         }
     }
-    cout << "Data invalida, insira novamente !!" << endl;
+
+    cout << "Data inválida. Insira novamente!" << std::endl;
     return false;
 }
+
 
 int calcularIdade(const string &dataNascimento)
 {
@@ -375,7 +345,6 @@ void imprimiPassageiro(Passageiro &passageiro)
     }
     cout << endl;
 }
-
 void incluir(vector<Passageiro> &passageiros)
 {
     Passageiro passageiro;
@@ -410,7 +379,6 @@ void incluir(vector<Passageiro> &passageiros)
 
     passageiros.push_back(passageiro);
 }
-
 void excluir(vector<Passageiro> &passageiros)
 {
     string cpf;
@@ -504,6 +472,40 @@ void localizar(vector<Passageiro> &passageiros)
             imprimiPassageiro(passageiro);
             break;
         }
+    }
+}
+
+void preencherPassageirosTeste(vector<Passageiro> &passageiros)
+{
+    string nomes[] = {"João", "Maria", "Pedro", "Ana", "Carlos", "Lúcia", "Paulo", "Camila", "Rodrigo", "Isabela"};
+
+    for (int i = 0; i < 10; ++i)
+    {
+        Passageiro passageiro;
+        passageiro.nome = nomes[i];
+
+        // Gera um CPF fictício válido para o passageiro
+        // Esta é uma implementação fictícia apenas para demonstração
+        // Em um cenário real, você precisaria gerar CPFs de forma diferente
+        std::string cpfFicticio = "123456789";
+        srand(time(0)); // Inicializa a semente aleatória
+        for (int j = 0; j < 2; ++j)
+            cpfFicticio += to_string(rand() % 10);
+        for (int j = 0; j < 6; ++j)
+            cpfFicticio += to_string(rand() % 10);
+
+        passageiro.cpf = cpfFicticio;
+
+        // Simula uma data de nascimento válida para o passageiro
+        // Se i for par, a data de nascimento será ajustada para garantir que tenha menos de 18 anos
+        int anoAtual = 2023; // Ano atual fictício para o exemplo
+        int anoNascimento = anoAtual - 18 - (i % 2); // Ajusta a data de nascimento para garantir menos de 18 anos
+        passageiro.dtNascimento = "01/01/" + to_string(anoNascimento);
+
+        if (i % 2 == 0) // Simular alguns passageiros menores de 18 anos
+            passageiro.numAutorizacao = i + 1;
+
+        passageiros.push_back(passageiro);
     }
 }
 
