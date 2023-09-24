@@ -11,6 +11,7 @@ bool verificaDivisores(int numero);
 void verificaPrimo();
 void menuJogo();
 void jogoAdivinhacao();
-void pegaImprimeAluno();
+// void pegaImprimeAluno();
+void calcularMediaAlunos();
 
 #endif
