@@ -256,5 +256,39 @@ void priramideAlfaNumericos(){
     }
 }
 
+// Exercicio 08
+void imprimePadraoB(int altura) {
+    for (int i = 0; i < altura; i++) {
+        for (int j = 0; j <= i; j++) {
+            cout << '*';
+        }
+        cout << endl;
+    }
+}
+
+void imprimePadraoA(int altura) {
+    for (int i = 0; i < altura; i++) {
+        for (int j = 0; j < altura; j++) {
+            cout << '*';
+        }
+        cout << endl;
+    }
+}
+
+void imprimePadraoC(int altura) {
+    for (int i = 0; i < altura; i++) {
+        for (int j = 0; j < altura; j++) {
+            if (i == 0 || i == altura - 1 || j == 0 || j == altura - 1) {
+                cout << '*';
+            } else {
+                cout << ' ';
+            }
+        }
+        cout << endl;
+    }
+}
+
+
+
 
 
