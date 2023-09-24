@@ -11,7 +11,7 @@ bool verificaDivisores(int numero);
 void verificaPrimo();
 void menuJogo();
 void jogoAdivinhacao();
-// void pegaImprimeAluno();
 void calcularMediaAlunos();
+void priramideAlfaNumericos();
 
 #endif
