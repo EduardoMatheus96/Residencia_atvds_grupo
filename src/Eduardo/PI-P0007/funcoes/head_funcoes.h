@@ -13,5 +13,9 @@ void menuJogo();
 void jogoAdivinhacao();
 void calcularMediaAlunos();
 void priramideAlfaNumericos();
+void imprimePadraoA(int altura);
+void imprimePadraoB(int altura);
+void imprimePadraoC(int altura);
+
 
 #endif
