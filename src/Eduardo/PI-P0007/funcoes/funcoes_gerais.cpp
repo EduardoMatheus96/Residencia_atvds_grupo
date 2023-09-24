@@ -192,55 +192,8 @@ void menuJogo()
 }
 
 // Exercicio 06
-// void pegaImprimeAluno()
-// {
-//     map<int, vector<double>> mapaNotas;
-//     int matricula;
-//     vector<double> notas(2);
-
-//     cout << "Insira a matricula do aluno: ";
-//     cin >> matricula;
-//     cout << endl;
-//     notas.push_back(matricula);
-
-//     cout << "Insira as notas desse aluno de matricula "
-//          << matricula << endl;
-//     for (int i = 0; i < 3; i++)
-//     {
-//         fflush(stdin);
-//         cout << "Insira a nota "
-//              << i + 1
-//              << " do aluno de matricula "
-//              << matricula
-//              << ": ";
-//         cin >> notas[i];
-//         cout << endl;
-//     }
-//     double mediaAluno = (notas[0] + notas[1] + notas[2]) / 3;
-//     notas.push_back(mediaAluno);
-//     mapaNotas[matricula] = notas;
-
-//     cout << "MATRÍCULA  NOTA1  NOTA2  NOTA3  MÉDIA" << endl;
-//     cout << "======================================" << endl;
-
-//     for (const auto &par : mapaNotas)
-//     {
-//         int matricula = par.first;
-//         const vector<double> &notas = par.second;
-
-//         cout << "  " << matricula << "     ";
-//         for (size_t i = 0; i < notas.size(); ++i)
-//         {
-//             cout << fixed << setprecision(1) << "  " << notas[i];
-//             if (i < notas.size() - 1)
-//             {
-//                 cout << "  ";
-//             }
-//         }
-//         cout << endl;
-//     }
-// }
 void calcularMediaAlunos() {
+
     int matricula;
     float nota1, nota2, nota3;
 
@@ -273,3 +226,35 @@ void calcularMediaAlunos() {
             break;
     }
 }
+
+// Exercicio 07
+void priramideAlfaNumericos(){
+    int altura;
+
+    cout << "Digite a altura do padrão: ";
+    cin >> altura;
+
+    int numCaracteres = 1;
+    char caracter = 'A';
+
+    for (int i = 0; i < altura; ++i) {
+        for (int j = 0; j < numCaracteres; ++j) {
+            cout << caracter;
+
+            if (caracter == '9')
+                caracter = 'A';
+            else if (caracter == 'Z')
+                caracter = 'a';
+            else if (caracter == 'z')
+                caracter = '0';
+            else
+                caracter++;
+        }
+
+        cout << endl;
+        numCaracteres++;
+    }
+}
+
+
+
