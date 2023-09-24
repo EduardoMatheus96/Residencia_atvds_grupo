@@ -16,6 +16,7 @@ void priramideAlfaNumericos();
 void imprimePadraoA(int altura);
 void imprimePadraoB(int altura);
 void imprimePadraoC(int altura);
+bool ehNumeroPerfeito(int num);
 
 
 #endif

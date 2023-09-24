@@ -288,7 +288,16 @@ void imprimePadraoC(int altura) {
     }
 }
 
-
+// Exercicio 09
+bool ehNumeroPerfeito(int num) {
+    int soma = 0;
+    for (int i = 1; i <= num / 2; i++) {
+        if (num % i == 0) {
+            soma += i;
+        }
+    }
+    return (soma == num);
+}
 
 
 
