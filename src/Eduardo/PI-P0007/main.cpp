@@ -11,6 +11,7 @@
 #include "exercicios/exercicio08/head_exercicio08.h"
 #include "exercicios/exercicio09/head_exercicio09.h"
 #include "exercicios/exercicio10/head_exercicio10.h"
+#include "exercicios/exercicio11/head_exercicio11.h"
 #include "funcoes/head_funcoes.h"
 
 using namespace std;
@@ -31,7 +32,8 @@ int main() {
         "Exercício 7",
         "Exercício 8",
         "Exercício 9",
-        "Exercício 10"
+        "Exercício 10",
+        "Exercicio 11"
     };
 
     // Lista de ponteiros para as funções dos exercícios
@@ -45,7 +47,8 @@ int main() {
         exercicio07,
         exercicio08,
         exercicio09,
-        exercicio10
+        exercicio10,
+        exercicio11,
     };
 
     int escolha;

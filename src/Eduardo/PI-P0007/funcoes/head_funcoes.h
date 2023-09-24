@@ -18,6 +18,8 @@ void imprimePadraoB(int altura);
 void imprimePadraoC(int altura);
 bool ehNumeroPerfeito(int num);
 void imprimeSequenciaFib(int num);
+int contarDigitos(int num);
+bool ehArmstrong(int num);
 
 
 #endif

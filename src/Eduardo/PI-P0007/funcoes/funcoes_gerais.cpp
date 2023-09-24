@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 #include <iomanip>
+#include <cmath>
 
 using namespace std;
 
@@ -314,7 +315,29 @@ void imprimeSequenciaFib(int num) {
     cout << endl;
 }
 
+// Exercicio 11
+int contarDigitos(int num) {
+    int count = 0;
+    while (num != 0) {
+        num /= 10;
+        count++;
+    }
+    return count;
+}
 
+bool ehArmstrong(int num) {
+    int numOriginal = num;
+    int numDigitos = contarDigitos(num);
+    int sum = 0;
+
+    while (num != 0) {
+        int digito = num % 10;
+        sum += pow(digito, numDigitos);
+        num /= 10;
+    }
+
+    return (sum == numOriginal);
+}
 
 
 
