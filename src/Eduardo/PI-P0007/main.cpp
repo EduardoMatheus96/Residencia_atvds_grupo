@@ -48,7 +48,7 @@ int main() {
         exercicio10
     };
 
-    char escolha;
+    int escolha;
 
     do {
         cout << "_________________________________________________________ \n\n" << endl;
@@ -63,15 +63,15 @@ int main() {
         cin >> escolha;
         cout << endl;
 
-        int opcao = escolha - '0';
+        int opcao = escolha;
 
         if (opcao >= 1 && opcao <= exerciseFunctions.size()) {
             exerciseFunctions[opcao - 1]();  // Chama a função do exercício selecionado
-        } else if (escolha != '0') {
+        } else if (escolha != 0) {
             cout << "Escolha inválida. Por favor, tente novamente." << endl;
         }
 
-    } while (escolha != '0');
+    } while (escolha != 0);
 
     cout << "Saindo do programa. Até mais!" << endl;
     return 0;

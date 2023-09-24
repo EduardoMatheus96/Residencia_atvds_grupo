@@ -299,5 +299,23 @@ bool ehNumeroPerfeito(int num) {
     return (soma == num);
 }
 
+// Exercicio 10
+void imprimeSequenciaFib(int num) {
+    int num1 = 0, num2 = 1;
+    cout << "Sequencia de Fibonacci até o " << num << "-esimo termo:" << endl;
+    cout << num1 << " " << num2 << " ";
+
+    for (int i = 2; i < num; i++) {
+        int next = num1 + num2;
+        cout << next << " ";
+        num1 = num2;
+        num2 = next;
+    }
+    cout << endl;
+}
+
+
+
+
 
 
