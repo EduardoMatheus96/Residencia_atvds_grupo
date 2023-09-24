@@ -16,7 +16,7 @@ void exercicio06()
         cout << "1.Inserir Aluno: " << endl;
         cout << "0.Sair do programa" << endl;
         cin >> escolha; 
-        if(escolha)pegaImprimeAluno();
+        if(escolha)calcularMediaAlunos();
     } 
     
 }
