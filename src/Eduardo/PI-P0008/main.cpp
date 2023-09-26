@@ -1,5 +1,6 @@
 #include <iostream>
 #include "./exercicio02/parte01/exercicio02.cpp"
+#include "./exercicio02/parte02/parte02.cpp"
 
 using namespace std;
 
@@ -31,7 +32,7 @@ int main() {
                         exercicio02Parte01();
                         break;
                     case 2:
-                        
+                        parte02();
                         break;
                     case 3:
                         
