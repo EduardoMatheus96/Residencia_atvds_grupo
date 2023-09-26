@@ -33,6 +33,7 @@
 
 #Pasta com os arquivos executaveis do c++
 /src/output*
+/src/atividades_aula/output*
 /src/atividade_pratica_01/atividade_pratica_01_welvis/output*
 /src/atividade_pratica_02/atividade_pratica_02_welvis/output*
 /src/atividade_pratica_03/atividade_pratica_03_welvis/output*
