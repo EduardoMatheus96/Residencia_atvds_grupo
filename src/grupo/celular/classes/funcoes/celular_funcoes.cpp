@@ -41,3 +41,10 @@ string Celular::getCamera() const {
 string Celular::getMemoria() const {
     return memoria;
 }
+
+string Celular::getNumSerie() const {
+    return numSerie;
+}
+float Celular::getPorcBateria() const {
+    return porcBateria;
+}

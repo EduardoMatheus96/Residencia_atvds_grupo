@@ -11,6 +11,8 @@ private:
     string modelo;
     string camera;
     string memoria;
+    string numSerie;
+    float porcBateria;
 
 public:
     Celular(/* args */);
@@ -28,6 +30,8 @@ public:
     string getModelo() const;
     string getCamera() const;
     string getMemoria() const;
+    string getNumSerie() const;
+    float getPorcBateria() const;
 };
 
 Celular::Celular(/* args */)
