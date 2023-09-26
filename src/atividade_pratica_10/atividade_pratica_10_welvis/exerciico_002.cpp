@@ -6,43 +6,28 @@ Sistema de controle de notas de estudantes
     Utilize o algoritmo bubble sort descrito abaixo para implementar
 
 */
-
-/*
-//vetor possui os elementos a ordenar 
-n = vetor.end()-1 
-fazer { 
-  trocou = falso 
-    para (j = vetor.begin(); j < n; j++) { 
-            se vetor(j) > vetor(j + 1) { 
-        inverte as posições de vetor(j+1) e 
-vetor(j) 
-        trocou = verdadeiro; 
-            } 
-        } 
-  n-- 
-} enquanto (trocou)
-
-*/
-
-
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
+
 using namespace std;
 
-// void bubbleSort(vector<string> *nomes, int n){
-//     do{
-//         bool trocou = false;
-//         for (int j = 0; j < n; j++){
-//             if(nomes[j] > nomes[j+1]){
-//                 string auxNames = nomes[j];
-//                 nomes[j] = nomes[j+1];
-//                 nomes[j+1] = auxNomes;
-//                 trocou = true;
-//             }
-//         }
-//     }while()
-// }
+void bubbleSort(vector<string> &nomes, vector<float> &notas) {
+    int n = nomes.size();
+
+    for (int i = 0; i < n - 1; ++i) {
+        for (int j = 0; j < n - i - 1; ++j) {
+            if (nomes[j] > nomes[j + 1]) {
+                // Troque os nomes
+                swap(nomes[j], nomes[j + 1]);
+
+                // Mantenha as notas correspondentes na mesma ordem
+                swap(notas[2 * j], notas[2 * j + 2]);
+                swap(notas[2 * j + 1], notas[2 * j + 3]);
+            }
+        }
+    }
+}
 
 int main() {
     int N;
@@ -50,14 +35,15 @@ int main() {
     cin >> N;
 
     vector<string> nomes;
-    vector<float> notas1, notas2;
+    vector<float> notas;
 
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; ++i) {
         string nome;
         float nota1, nota2;
 
         cout << "Digite o nome do aluno " << i + 1 << ": ";
-        cin >> nome;
+        cin.ignore();
+        getline(cin, nome);
 
         cout << "Digite a primeira nota do aluno " << i + 1 << ": ";
         cin >> nota1;
@@ -66,14 +52,20 @@ int main() {
         cin >> nota2;
 
         nomes.push_back(nome);
-        notas1.push_back(nota1);
-        notas2.push_back(nota2);
+        notas.push_back(nota1);
+        notas.push_back(nota2);
     }
 
-    // Exibir os nomes e notas dos alunos
-    cout << "\nLista de Alunos e Notas:\n";
-    for (int i = 0; i < N; i++) {
-        cout << "Aluno: " << nomes[i] << ", Nota 1: " << notas1[i] << ", Nota 2: " << notas2[i] << endl;
+    // Chame a função bubbleSort para ordenar os nomes
+    bubbleSort(nomes, notas);
+
+    // Exibir os nomes e notas dos alunos ordenados
+    cout << "\nListagem dos alunos e notas ordenados em ordem alfabética:\n";
+    for (int i = 0; i < N; ++i) {
+        cout << "Aluno: " << nomes[i] << endl;
+        cout << "Nota 1: " << notas[2 * i] << endl;
+        cout << "Nota 2: " << notas[2 * i + 1] << endl;
+        cout << endl;
     }
 
     return 0;
