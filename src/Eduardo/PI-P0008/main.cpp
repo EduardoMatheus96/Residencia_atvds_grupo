@@ -1,6 +1,7 @@
 #include <iostream>
 #include "./exercicio02/parte01/exercicio02.cpp"
 #include "./exercicio02/parte02/parte02.cpp"
+#include "./exercicio02/parte03/parte03.cpp"
 
 using namespace std;
 
@@ -35,7 +36,7 @@ int main() {
                         parte02();
                         break;
                     case 3:
-                        
+                        parte03();
                         break;
                     default:
                         cout << "Opcao invalida." << endl;
