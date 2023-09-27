@@ -1,0 +1,19 @@
+CXX = g++
+CXXFLAGS = -std=c++2a
+SRC_DIR = ../PI-P0007
+BUILD_DIR = outputs
+TARGET = pi_p0007
+
+SOURCES = $(SRC_DIR)/main.cpp $(SRC_DIR)/exercicios/exercicio01/exercicio01.cpp $(SRC_DIR)/exercicios/exercicio02/exercicio02.cpp $(SRC_DIR)/exercicios/exercicio03/exercicio03.cpp $(SRC_DIR)/exercicios/exercicio04/exercicio04.cpp $(SRC_DIR)/exercicios/exercicio05/exercicio05.cpp $(SRC_DIR)/exercicios/exercicio06/exercicio06.cpp $(SRC_DIR)/exercicios/exercicio07/exercicio07.cpp $(SRC_DIR)/exercicios/exercicio08/exercicio08.cpp $(SRC_DIR)/exercicios/exercicio09/exercicio09.cpp $(SRC_DIR)/exercicios/exercicio10/exercicio10.cpp $(SRC_DIR)/exercicios/exercicio11/exercicio11.cpp $(SRC_DIR)/funcoes/funcoes_gerais.cpp
+OBJECTS := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SOURCES))
+
+$(BUILD_DIR)/$(TARGET): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+.PHONY: clean
+
+clean:
+	rm -f $(BUILD_DIR)/*.o $(BUILD_DIR)/$(TARGET)
