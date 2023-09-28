@@ -1,7 +1,3 @@
-Olá, Matheus esteve aqui. Pull request test, P03.
-
-# Expectativa
-    Melhorar cada vez mais meu aprendizado com novas tecnologias, bibliotecas e frameworks.
 # Motivação e expectativas
 
 ##  Motivações:
@@ -11,6 +7,3 @@ Olá, Matheus esteve aqui. Pull request test, P03.
 ## Expectativas:
 
 ### Tenho como expectativa conseguir uma vage no mercado de trabalhoa após o fim da residência.
-
-#OK
-
