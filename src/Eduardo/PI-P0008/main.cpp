@@ -2,6 +2,8 @@
 #include "./exercicio02/parte01/exercicio02.cpp"
 #include "./exercicio02/parte02/parte02.cpp"
 #include "./exercicio02/parte03/parte03.cpp"
+#include "./exercicio03/parte01/parte01.cpp"
+#include "./exercicio03/parte02/parte02.cpp"
 
 using namespace std;
 
@@ -54,10 +56,10 @@ int main() {
 
                 switch (subOpcao2) {
                     case 1:
-                        
+                        exericio03Parte01();
                         break;
                     case 2:
-                        
+                        exercico03Parte02();
                         break;
                     default:
                         cout << "Opcao invalida." << endl;
