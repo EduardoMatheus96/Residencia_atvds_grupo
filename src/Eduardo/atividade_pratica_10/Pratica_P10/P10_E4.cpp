@@ -5,7 +5,8 @@
 
 using namespace std;
 
-void bubbleSort(vector<string> &nomes, vector<float> &notas) {
+// Função para ordenar os nomes e suas respectivas notas em ordem alfabética
+void ordenarAlunos(vector<string> &nomes, vector<float> &notas) {
     int n = nomes.size();
 
     for (int i = 0; i < n - 1; ++i) {
@@ -27,20 +28,21 @@ float calcularMedia(float nota1, float nota2) {
 }
 
 int main() {
-    int N;
+    int limiteAlunos;
     cout << "Digite o limite de alunos (N): ";
-    cin >> N;
-    while (N < 1 || N > 100) {
+    cin >> limiteAlunos;
+
+    while (limiteAlunos < 1 || limiteAlunos > 100) {
         cout << "Digite um valor entre 1 e 100: ";
-        cin >> N;
-        return 1;
+        cin >> limiteAlunos;
     }
+
     vector<string> nomes;
     vector<float> notas;
 
     char incluirAluno = 's';
     while (incluirAluno == 's') {
-        if (nomes.size() >= N) {
+        if (nomes.size() >= limiteAlunos) {
             cout << "Limite de alunos atingido." << endl;
             break;
         }
@@ -62,13 +64,14 @@ int main() {
         notas.push_back(nota1);
         notas.push_back(nota2);
 
-
+        cout << "Deseja incluir mais alunos (s/n)? ";
+        cin >> incluirAluno;
     }
 
-    bubbleSort(nomes, notas);
+    ordenarAlunos(nomes, notas);
 
-    char excluirAluno = 's';
-    while (excluirAluno == 's') {
+    char excluirAluno;
+    do {
         cout << "Deseja excluir algum aluno (s/n)? ";
         cin >> excluirAluno;
 
@@ -79,7 +82,7 @@ int main() {
             getline(cin, nomeParaExcluir);
 
             // Encontre o nome na lista e exclua-o
-            vector<string>::iterator it = find(nomes.begin(), nomes.end(), nomeParaExcluir);
+            auto it = find(nomes.begin(), nomes.end(), nomeParaExcluir);
             if (it != nomes.end()) {
                 int index = distance(nomes.begin(), it);
 
@@ -87,36 +90,13 @@ int main() {
                 notas.erase(notas.begin() + (2 * index), notas.begin() + (2 * index + 2));
 
                 cout << "Aluno excluído com sucesso." << endl;
-
-                cout << "Deseja incluir mais alunos (s/n)? ";
-                cin >> incluirAluno;
-                while (incluirAluno == 's') {
-                string nome;
-                float nota1, nota2;
-                if (nomes.size() >= N) {
-                cout << "Limite de alunos atingido." << endl;
-                break;}
-                cout << "Digite o nome do aluno: ";
-                cin.ignore();
-                getline(cin, nome);
-
-                cout << "Digite a primeira nota do aluno: ";
-                cin >> nota1;
-
-                cout << "Digite a segunda nota do aluno: ";
-                cin >> nota2;
-            nomes.push_back(nome);
-            notas.push_back(nota1);
-            notas.push_back(nota2);
-            }
-
-
             } else {
                 cout << "Aluno não encontrado." << endl;
             }
         }
-    }
-char alterarNota;
+    } while (excluirAluno != 'n');
+
+    char alterarNota;
     do {
         cout << "Deseja alterar alguma nota (s/n)? ";
         cin >> alterarNota;
@@ -128,7 +108,7 @@ char alterarNota;
             getline(cin, nomeParaAlterar);
 
             // Encontre o nome na lista
-            vector<string>::iterator it = find(nomes.begin(), nomes.end(), nomeParaAlterar);
+            auto it = find(nomes.begin(), nomes.end(), nomeParaAlterar);
             if (it != nomes.end()) {
                 int index = distance(nomes.begin(), it);
 
@@ -154,16 +134,10 @@ char alterarNota;
 
                 // Recalcula a média
                 float novaMedia = calcularMedia(notas[2 * index], notas[2 * index + 1]);
-
                 cout << "Média atualizada do aluno " << nomeParaAlterar << ": " << novaMedia << endl;
-                
-                // Verifica se o aluno está aprovado ou reprovado
-                if (novaMedia >= 7.0) {
-                    cout << "Situação: Aprovado" << endl;
-                } else {
-                    cout << "Situação: Reprovado" << endl;
-                }
 
+                // Verifica se o aluno está aprovado ou reprovado
+                cout << "Situação: " << (novaMedia >= 7.0 ? "Aprovado" : "Reprovado") << endl;
             } else {
                 cout << "Aluno não encontrado." << endl;
             }
