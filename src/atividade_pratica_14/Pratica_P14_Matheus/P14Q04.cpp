@@ -1,51 +1,49 @@
-
 #include <iostream>
-#include <string>
 using namespace std;
 
-struct Motor {
-    int cilindrada;        
-    int potencia;         
-    string tipo;      
-};
+// Função para ler um número float do usuário
+float lerNumero() {
+    float numero;
+    cout << "Digite um numero: ";
+    cin >> numero;
+    return numero;
+}
 
-struct Pneus {
-    int quantidade;        
-    string tipo;      
-};
+// Função para realizar a adição de dois números
+float somar(float num1, float num2) {
+    return num1 + num2;
+}
 
-struct Carro {
-    string marca;     
-    string modelo;    
-    int anoFabricacao;     
-    Motor motor;           
-    Pneus pneus;           
-};
+// Função para realizar a subtração de dois números
+float subtrair(float num1, float num2) {
+    return num1 - num2;
+}
+
+// Função para realizar a multiplicação de dois números
+float multiplicar(float num1, float num2) {
+    return num1 * num2;
+}
+
+// Função para realizar a divisão de dois números
+float dividir(float num1, float num2) {
+    if (num2 != 0) {
+        return num1 / num2;
+    } else {
+        cout << "Erro: divisao por zero." << endl;
+        return 0.0;
+    }
+}
 
 int main() {
-    Carro meuCarro;
-    meuCarro.marca = "Toyota";
-    meuCarro.modelo = "Corolla";
-    meuCarro.anoFabricacao = 2022;
+    float numero1, numero2;
 
-    meuCarro.motor.cilindrada = 2000;
-    meuCarro.motor.potencia = 150;
-    meuCarro.motor.tipo = "Gasolina";
+    numero1 = lerNumero();
+    numero2 = lerNumero();
 
-    meuCarro.pneus.quantidade = 4;
-    meuCarro.pneus.tipo = "Verao";
-
-    cout << "Informacoes do Carro:" << endl;
-    cout << "Marca: " << meuCarro.marca << endl;
-    cout << "Modelo: " << meuCarro.modelo << endl;
-    cout << "Ano de Fabricacao: " << meuCarro.anoFabricacao << endl;
-    cout << "Motor:" << endl;
-    cout << "  Cilindrada: " << meuCarro.motor.cilindrada << " cc" << endl;
-    cout << "  Potencia: " << meuCarro.motor.potencia << " HP" << endl;
-    cout << "  Tipo de Combustivel: " << meuCarro.motor.tipo << endl;
-    cout << "Pneus:" << endl;
-    cout << "  Quantidade: " << meuCarro.pneus.quantidade << endl;
-    cout << "  Tipo: " << meuCarro.pneus.tipo << endl;
+    cout << "Resultado da Soma: " << somar(numero1, numero2) << endl;
+    cout << "Resultado da Subtracao: " << subtrair(numero1, numero2) << endl;
+    cout << "Resultado da Multiplicacao: " << multiplicar(numero1, numero2) << endl;
+    cout << "Resultado da Divisao: " << dividir(numero1, numero2) << endl;
 
     return 0;
 }
