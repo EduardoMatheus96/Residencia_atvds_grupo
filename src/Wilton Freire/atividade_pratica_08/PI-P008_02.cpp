@@ -21,7 +21,7 @@ float gerarTemperaturaAleatoria() {
 void armazenarTemperaturas(float temperaturas[]) {
     for (int i = 0; i < NUM_ESTACOES; i++) {
         temperaturas[i] = gerarTemperaturaAleatoria();
-    std::cout << temperaturas[i] << std::endl;
+    cout << temperaturas[i] << endl;
     }
 }
 
@@ -83,11 +83,11 @@ int main() {
     atualizarTemperaturas(temperaturas, temperaturaMedia);
 
     // Exibir os resultados
-    std::cout << "Temperatuas reportadas: " << NUM_ESTACOES << std::endl;
-    std::cout << "Temperaturas de todas as estacoes: " << gerarTemperaturaAleatoria() << std::endl;
-    std::cout << "Temperatura maxima: " << temperaturaMaxima << std::endl;
-    std::cout << "Temperatura minima: " << temperaturaMinima << std::endl;
-    std::cout << "Temperatura media: " << temperaturaMedia << std::endl;
+    cout << "Temperatuas reportadas: " << NUM_ESTACOES << endl;
+    cout << "Temperaturas de todas as estacoes: " << gerarTemperaturaAleatoria() << endl;
+    cout << "Temperatura maxima: " << temperaturaMaxima << endl;
+    cout << "Temperatura minima: " << temperaturaMinima << endl;
+    cout << "Temperatura media: " << temperaturaMedia << endl;
 
     return 0;
 }

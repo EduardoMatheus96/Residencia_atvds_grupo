@@ -33,4 +33,9 @@
 
 #Pasta com os arquivos executaveis do c++
 /src/output*
-/src/grupo/celular/output*
+.vscode
+src/Wilton Freire/atividade_pratica_01/output
+src/Wilton Freire/atividade_pratica_04/output
+src/Wilton Freire/atividade_pratica_08/output
+src/Wilton Freire/atividade_pratica_10/output
+

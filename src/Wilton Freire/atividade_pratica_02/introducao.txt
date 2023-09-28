@@ -1,0 +1,6 @@
+- Projeto com a finalidade de colocar em pratica o que aprendemos em sala de aula com os comandos do GitBash.
+- Foi criado uma nova Branch chamada feature-navbar
+
+Tags:
+Versão 1.0
+Versão 2.0

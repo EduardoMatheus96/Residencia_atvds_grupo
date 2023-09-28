@@ -34,18 +34,17 @@ int main() {
         cout << "Digite um valor entre 1 e 100: ";
         cin >> N;
         return 1;
-        
     }
     vector<string> nomes;
     vector<float> notas;
 
-    /*char incluirAluno = 's';
+    char incluirAluno = 's';
     while (incluirAluno == 's') {
         if (nomes.size() >= N) {
             cout << "Limite de alunos atingido." << endl;
             break;
         }
-    */
+
         string nome;
         float nota1, nota2;
 
@@ -63,8 +62,7 @@ int main() {
         notas.push_back(nota1);
         notas.push_back(nota2);
 
-        cout << "Deseja incluir mais alunos (s/n)? ";
-        cin >> incluirAluno;
+
     }
 
     bubbleSort(nomes, notas);
@@ -89,6 +87,30 @@ int main() {
                 notas.erase(notas.begin() + (2 * index), notas.begin() + (2 * index + 2));
 
                 cout << "Aluno excluído com sucesso." << endl;
+
+                cout << "Deseja incluir mais alunos (s/n)? ";
+                cin >> incluirAluno;
+                while (incluirAluno == 's') {
+                string nome;
+                float nota1, nota2;
+                if (nomes.size() >= N) {
+                cout << "Limite de alunos atingido." << endl;
+                break;}
+                cout << "Digite o nome do aluno: ";
+                cin.ignore();
+                getline(cin, nome);
+
+                cout << "Digite a primeira nota do aluno: ";
+                cin >> nota1;
+
+                cout << "Digite a segunda nota do aluno: ";
+                cin >> nota2;
+            nomes.push_back(nome);
+            notas.push_back(nota1);
+            notas.push_back(nota2);
+            }
+
+
             } else {
                 cout << "Aluno não encontrado." << endl;
             }

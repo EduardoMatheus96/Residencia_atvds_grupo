@@ -1,16 +1,4 @@
-Olá, Matheus esteve aqui. Pull request test, P03.
-
-# Expectativa
-    Melhorar cada vez mais meu aprendizado com novas tecnologias, bibliotecas e frameworks.
-# Motivação e expectativas
-
-##  Motivações:
-
-### Estou motivada a aprender mais sobre novas tecnologias e abordagem em projetos reais de desenvolvimento.
-
-## Expectativas:
-
-### Tenho como expectativa conseguir uma vage no mercado de trabalhoa após o fim da residência.
-
-#OK
-
+> Embora tenha conhecimento limitado em programação, estou empenhado em aprimorar minhas habilidades e
+> buscar oportunidades de crescimento pessoal com o desenvolvimento de software.
+> Meu objetivo é crescer nessa área, adquirindo conhecimento por meio de aprendizado contínuo e colaboração > com meus caros colegas. Estou entusiasmado para embarcar nessa jornada de aprendizado e contribuição no
+> mundo da tecnologia.
