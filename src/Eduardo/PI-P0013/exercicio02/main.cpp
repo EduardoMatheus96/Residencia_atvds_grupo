@@ -1,129 +1,47 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <map>
 
 using namespace std;
 
-struct empregado
-{
+struct Empregado {
     string nome;
     string sobrenome;
-    string anoNascimento;
-    string rg;
-    string anoAdmissao;
-    double salario;
+    int ano_nascimento;
+    string RG;
+    int ano_admissao;
+    float salario;
 };
 
-void reajustaDezPorCento(vector<empregado> &empregados)
-{
-    for (auto &&i : empregados)
-    {
-        i.salario = i.salario + (i.salario * 0.1); 
-    }
-}   
-
-void preencheNomes(vector<empregado> &nomes)
-{
-    srand(time(NULL));
-    string auxiliar = "";
-    for (size_t i = 0; i < 50; i++)
-    {
-        for (size_t j = 0; j < 8; j++)
-        {
-            auxiliar = auxiliar + (char)('a' + (char)rand()%26);    
-        }
-        nomes[i].nome = auxiliar;
-        auxiliar = "";
-
-
-    }
-}
-void preencheSobreNomes(vector<empregado> &sobreNomes)
-{
-    srand(time(NULL));
-    string auxiliar = "";
-    for (size_t i = 0; i < 50; i++)
-    {
-        for (size_t j = 0; j < 8; j++)
-        {
-            auxiliar = auxiliar + (char)('a' + (char)rand()%26);    
-        }
-        sobreNomes[i].sobrenome = auxiliar;
-        auxiliar = "";
-        
+void Reajusta_dez_porcento(Empregado empregados[], int quantidade) {
+    for (int i = 0; i < quantidade; ++i) {
+        empregados[i].salario *= 1.10;  // Aumento de 10%
     }
 }
 
-void preencheRG(vector<empregado> &rg)
-{
-    srand(time(NULL));
-    string auxiliar = "";
-    for (size_t i = 0; i < 50; i++)
-    {
-        for (size_t j = 0; j < 13; j++)
-        {
-            auxiliar = auxiliar + (char)(rand()%10);    
-        }
-        rg[i].rg = auxiliar;
-        auxiliar = "";
-        
+int main() {
+    const int MAX_EMPREGADOS = 50;
+    Empregado empregados[MAX_EMPREGADOS] = {
+        {"Joao", "Silva", 1980, "123456789", 2005, 3000.0},
+        {"Maria", "Santos", 1990, "987654321", 2010, 3500.0},
+        // Adicione mais empregados conforme necessário
+    };
+
+    int quantidade_empregados = 2;  // Número atual de empregados
+
+    // Antes do reajuste
+    cout << "Salarios antes do reajuste:" << endl;
+    for (int i = 0; i < quantidade_empregados; ++i) {
+        cout << empregados[i].nome << " " << empregados[i].sobrenome << ": " << empregados[i].salario << endl;
     }
-}
 
-// void preencheAdmissao(vector<empregado> &admissao)
-// {
-//     srand(time(NULL));
-//     string auxiliar = "";
-//     for (size_t i = 0; i < 50; i++)
-//     {
-//         // for (size_t j = 0; j < 4; j++)
-//         // {
-//         //     auxiliar = auxiliar + (char)(1990 + rand()%2024);    
-//         // }
-//         auxiliar = (1990 + rand()%2024);
-//         admissao[i].anoAdmissao = auxiliar;
-        
-//     }
-// }
-// void preencheNascimento(vector<empregado> &nascimento)
-// {
-//     srand(time(NULL));
-//     string auxiliar = "";
-//     for (size_t i = 0; i < 50; i++)
-//     {
-//         // for (size_t j = 0; j < 4; j++)
-//         // {
-//         //     auxiliar = auxiliar + (char)(1990 + rand()%2024);    
-//         // }
-//         auxiliar = (1910 + rand()%2024);
-//         nascimento[i].anoNascimento = auxiliar;
-        
-//     }
-// }
+    // Reajusta os salários em 10%
+    Reajusta_dez_porcento(empregados, quantidade_empregados);
 
-int main(void)
-{
-    
-    vector<empregado> empregados;
-    preencheNomes(empregados);
-    preencheSobreNomes(empregados);
-    preencheRG(empregados);
-    // preencheAdmissao(empregados);
-    // preencheNascimento(empregados);
-    // for (auto &&i : empregados)
-    // {
-    //     cout 
-    //     << "O salario de "
-    //     << i.nome 
-    //     << i.sobrenome
-    //     << " é de: R$ "
-    //     << i.salario
-    //     << endl;
-    // }
-    // reajustaDezPorCento(empregados);
-    
-
+    // Após o reajuste
+    cout << "\nSalarios apos o reajuste:" << endl;
+    for (int i = 0; i < quantidade_empregados; ++i) {
+        cout << empregados[i].nome << " " << empregados[i].sobrenome << ": " << empregados[i].salario << endl;
+    }
 
     return 0;
 }
