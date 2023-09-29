@@ -10,7 +10,7 @@ int main() {
     setlocale(LC_ALL, "Portuguese");
     
     char caractere1 = 'ç';
-    char caractere2 = 'ã';
+    char caractere2 = 'a';
 
     cout << "Caractere 1: " << caractere1 << endl;
     cout << "Caractere 2: " << caractere2 << endl;

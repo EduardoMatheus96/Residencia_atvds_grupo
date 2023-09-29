@@ -27,7 +27,7 @@ int main()
     if (ch == '0')
     {
         ch = '9';
-        cout << "O caractere ch não pode ser 0" << endl;
+        cout << "O caractere ch nao pode ser 0" << endl;
     }
 
     return 0;

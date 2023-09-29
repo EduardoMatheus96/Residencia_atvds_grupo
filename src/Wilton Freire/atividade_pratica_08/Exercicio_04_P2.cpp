@@ -7,16 +7,19 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     srand(static_cast<unsigned int>(time(nullptr)));
 
     const int numStrings = 10;
     vector<string> listaDeStrings;
 
-    for (int j = 0; j < numStrings; ++j) {
+    for (int j = 0; j < numStrings; ++j)
+    {
         vector<char> caracteresString;
 
-        for (int i = 0; i < numStrings; ++i) {
+        for (int i = 0; i < numStrings; ++i)
+        {
             char caractereAleatorio = 'a' + rand() % ('z' - 'a' + 1);
             caracteresString.push_back(caractereAleatorio);
         }
@@ -30,9 +33,10 @@ int main() {
         listaDeStrings.push_back(novaString);
     }
 
-    for (int k = 0; k < numStrings; ++k) {
+    for (int k = 0; k < numStrings; ++k)
+    {
         cout << "String " << k + 1 << " (ordenada): " << listaDeStrings[k] << endl;
     }
 
-    return 0; 
+    return 0;
 }
