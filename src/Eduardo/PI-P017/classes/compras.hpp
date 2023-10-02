@@ -10,33 +10,28 @@ class Produto
 private:
     string nome;
     double valor;
-    static int proximoCodigo;
+    int codigo;
 
 public:
     // Produto();
-    // Produto(string nome, double valor, int proximoCodigo);
-    string getNome();
-
-    double getValor();
-    int getCodigo();
-
-    void setNome(string nome);
-
-    void setValor(double valor);
-    void setProximoCodigo(int proximoCodigo);
+    Produto(string nome, double valor, int codigo);
+    string getNome() const;
+    double getValor() const;
+    int getCodigo() const;
+    void setNome(string nome) const;
+    void setValor(double valor) const;
+    void setCodigo(int codigo) const;
 };
 
 class CarrinhoDeCompras
 {
-     private :
+    private :
         vector<Produto> produtos;
-     public :
-
-          string getProdutos();
-
-          void setProduto(Produto produto);
-
-          bool removerProduto(int codigoProduto);
+    public :
+        CarrinhoDeCompras(vector<Produto> produtos);    
+        vector<Produto> getProdutos() const;
+        void setProduto(Produto produto);
+        bool removerProduto(int codigoProduto);
 };
 
 class Estoque
@@ -46,14 +41,12 @@ private:
     int quantidade;
 
 public:
-    string getNome();
-
-    int getQuantidae();
-
+    Estoque(string nome, int quantidade);
+    string getNome() const;
+    int getQuantidae() const;
     void setNome(string nome);
-
     void setQuantidade(int quantidade);
-    void atuaizarEstoque(int codigoProduto);
+    void atualizarEstoque(int codigoProduto);
 };
 
 #endif
