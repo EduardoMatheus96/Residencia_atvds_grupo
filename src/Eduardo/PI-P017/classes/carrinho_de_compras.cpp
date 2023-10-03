@@ -4,15 +4,30 @@
 #include "compras.hpp"
 using namespace std;
 
-CarrinhoDeCompras::CarrinhoDeCompras(vector<Produto> produtos) : produtos(produtos) {}
+CarrinhoDeCompras::CarrinhoDeCompras(){}
+CarrinhoDeCompras::CarrinhoDeCompras(vector<Produto> produtos)
+: produtos(produtos) {}
 
 vector<Produto> CarrinhoDeCompras::getProdutos() const
 {
   return produtos;
 }
-void CarrinhoDeCompras::setProduto(Produto produto)
+void CarrinhoDeCompras::adicionarProduto(Produto produto, int qndProduto)
 {
-  produtos.push_back(produto);
+  while (qndProduto)
+  {
+    produtos.push_back(produto);
+    qndProduto--;
+  }
+  
+}
+double CarrinhoDeCompras::calculaValorTotal(){
+  double total = 0.0;
+  for (Produto produto : produtos)
+  {
+    total += produto.getValor();
+  }
+  return total;
 }
 bool CarrinhoDeCompras::removerProduto(int codigoProduto)
 {
@@ -28,4 +43,8 @@ bool CarrinhoDeCompras::removerProduto(int codigoProduto)
     }
   }
   return false; // Produto não encontrado
+}
+
+void CarrinhoDeCompras::esvaziarCarrinho(){
+  produtos.clear();
 }
