@@ -40,15 +40,15 @@ public:
     }
 };
 
-class Cachorrinho: public Cachorro
+class Cachorrinho: public Animal
 {
 private:
     /* data */
 public:
-    Cachorrinho(string nome, unsigned int idade):Cachorro(nome, idade) {
+    Cachorrinho(string nome, unsigned int idade):Animal(nome, idade) {
     }
     ~Cachorrinho() {}
-    // void fazerSom() {
+    // void fazerSom() override {
     //     Cachorro::fazerSom();
     //     cout << "(baixinho)..." << endl;
     // }
