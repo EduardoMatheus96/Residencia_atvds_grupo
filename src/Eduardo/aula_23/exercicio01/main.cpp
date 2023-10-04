@@ -26,8 +26,7 @@ public:
     void setIdade(unsigned int idade){
         this->idade = idade;
     }
-    virtual string fazerSom(){
-    }
+    virtual string fazerSom() {};
 };
 
 class Cachorro : public Animal
@@ -35,21 +34,32 @@ class Cachorro : public Animal
 private:
     
 public:
-    Cachorro(string nome, unsigned int idade):Animal(nome,idade) {
-        
-    }
+    Cachorro(string nome, unsigned int idade):Animal(nome,idade) {}
     string fazerSom() override{
         return "AUAUAU";
     }
 };
 
-
+class Cachorrinho: public Cachorro
+{
+private:
+    /* data */
+public:
+    Cachorrinho(string nome, unsigned int idade):Cachorro(nome, idade) {
+    }
+    ~Cachorrinho() {}
+    // void fazerSom() {
+    //     Cachorro::fazerSom();
+    //     cout << "(baixinho)..." << endl;
+    // }
+};
 
 int main(void)
 {
     Animal animal("gato", 2);
     cout << animal.getNome() << " de idade: " << animal.getIdade() << endl;
     Cachorro cachorro("Lippy", 14);
+    Cachorrinho cachorrinho("tst", 3);
     cout << "Nome do cachorro: "
         << cachorro.getNome() 
         << " de idade: "
@@ -57,7 +67,6 @@ int main(void)
         << ", Faz: " 
         << cachorro.fazerSom() 
         << endl;
-
-
+    cout << cachorrinho.fazerSom() << endl;
     return 0;
 }
