@@ -69,11 +69,38 @@ public:
     }
 };
 
+class Estoque {
+    private:
+
+    vector<Produto> prod;
+    vector<int> estoque;
+
+    public: 
+
+
+    void listarProdutosEstoque() {
+        cout << "Produtos no estoque:" << endl;
+        for (size_t i = 0; i < estoque.size(); i++) {
+            cout << "Produto: " << prod[i].getNome() << " | Quantidade: " << estoque[i] << endl;
+        }
+    }
+    
+    void setProdutoEstoque(Produto prod, int quantidade){
+        this->prod.push_back(prod);
+        this-> estoque.push_back(quantidade);
+    }
+
+};
+
 int main() {
     CarrinhoDeCompras carrinho;
+    Estoque estoqueEmpresa;
     Produto p1("Leite", 5.99);
+    estoqueEmpresa.setProdutoEstoque(p1, 50);
     Produto p2("Chá", 3.55);
+    estoqueEmpresa.setProdutoEstoque(p2, 20);
     Produto p3("Queijo", 13.60);
+    estoqueEmpresa.setProdutoEstoque(p3, 30);
 
     carrinho.adicionarProduto(p1, 5);
     carrinho.adicionarProduto(p2, 7);
@@ -82,6 +109,7 @@ int main() {
     cout << "Valor total: " << carrinho.calcTotal() << endl;
 
     carrinho.listarProdutosNoCarrinho();
+    estoqueEmpresa.listarProdutosEstoque();
 
     // Remover um item do carrinho pelo nome (por exemplo, "Leite")
     carrinho.removerProdutoPorNome("Leite");
