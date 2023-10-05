@@ -55,12 +55,10 @@ void CarrinhoDeCompras::esvaziarCarrinho()
 
 void CarrinhoDeCompras::exibirCarrinho()
 {
+  int aux = 0;
   for (int qtd : this->qtd)
   {
-
-    for (int i = 0; i < this->qtd.size(); i += this->qtd.at(i - 1))
-    {
-      cout << "- " << produtos[qtd-1].getNome() << " (" << produtos[qtd-1].getValor() << ") " << qtd << endl;
-    }
+    cout << "- " << produtos[aux].getNome() << " (" << produtos[aux].getValor() << ") " << qtd << endl;
+    aux += (qtd - 1);
   }
 }

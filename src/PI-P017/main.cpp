@@ -15,7 +15,7 @@ int main(void)
 
     Estoque estoque1("Maca", 10);
     Estoque estoque2("Arroz", 5);
-    Estoque estoque3("Leito", 12);
+    Estoque estoque3("Leite", 12);
     
     CarrinhoDeCompras carrinho;
     carrinho.adicionarProduto(produto1, 3, estoque1);

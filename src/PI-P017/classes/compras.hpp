@@ -5,6 +5,8 @@
 
 using namespace std;
 
+class Estoque;
+
 class Produto
 {
 private:
