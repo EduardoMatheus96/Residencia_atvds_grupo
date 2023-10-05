@@ -5,6 +5,8 @@
 
 using namespace std;
 
+class Estoque;
+
 class Produto
 {
 private:
@@ -28,14 +30,16 @@ class CarrinhoDeCompras
 {
     private :
         vector<Produto> produtos;
+        vector<int> qtd;
     public :
         CarrinhoDeCompras();
-        CarrinhoDeCompras(vector<Produto> produtos);    
+        CarrinhoDeCompras(vector<Produto> produtos, vector<int> qtd);    
         vector<Produto> getProdutos() const;
-        void adicionarProduto(Produto produto, int qntProdutos);
+        void adicionarProduto(Produto produto, int qntProdutos, Estoque &estoque);
         double calculaValorTotal();
-        bool removerProduto(int codigoProduto);
+        bool removerProduto(int codigoProduto, Estoque &estoque);
         void esvaziarCarrinho();
+        void exibirCarrinho();
 };
 
 class Estoque
@@ -50,7 +54,8 @@ public:
     int getQuantidae() const;
     void setNome(string nome);
     void setQuantidade(int quantidade);
-    void atualizarEstoque(int codigoProduto);
+    void adicionarEstoque();
+    void decrementarEstoque();
 };
 
 #endif

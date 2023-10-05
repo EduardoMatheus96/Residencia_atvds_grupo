@@ -22,11 +22,16 @@ void Estoque::setQuantidade(int quantidade)
 {
   this->quantidade = quantidade;
 }
-void Estoque::atualizarEstoque(int codigoProduto)
+void Estoque::decrementarEstoque()
 {
   if (this->quantidade > 0)
   {
     this->quantidade--;
   }
+}
+
+void Estoque::adicionarEstoque()
+{
+    this->quantidade++;
 }
 
