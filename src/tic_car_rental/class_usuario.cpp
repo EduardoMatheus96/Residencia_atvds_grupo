@@ -13,6 +13,8 @@ class Usuario{
     string telefone;
     
     public:
+    Usuario(string cpf, string nome, string endereco, string telefone);
+
     void setCPF(string cpf){
         this->cpf = cpf;
     }
