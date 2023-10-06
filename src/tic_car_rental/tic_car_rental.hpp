@@ -2,14 +2,15 @@
 #define TIC_CAR_RENTAL_HPP
 #include <string>
 #include <vector>
+#include <ctime>
 
 using namespace std;
 
 struct Data
 {
     int ano;
-    short mes;
-    short dia;
+    int mes;
+    int dia;
 };
 
 class Aluguel
@@ -80,8 +81,21 @@ public:
     float getValorDiaria();
 };
 
-class Funcionario
+class Funcionario : public Usuario
 {
+private:
+    vector<Aluguel> historicoAlugueis;
+
+public:
+    Funcionario(string cpf, string nome, string endereco, string telefone, vector<Aluguel> historicoAlugueis)
+        : Usuario(cpf, nome, endereco, telefone)
+    {
+        this->historicoAlugueis = historicoAlugueis;
+    };
+
+    Aluguel alugarVeiculo(Cliente cliente, Veiculo veiculo, Data DataInicio, Data DataTermino);
+
+    void finalizarAluguel(Aluguel aluguel, Data dataDevolucao);
 };
 
 class Usuario
@@ -105,18 +119,26 @@ public:
     string getTelefone();
 };
 
-class Cliente
+class Cliente : public Usuario
 {
 private:
     string habilitacao;
     vector<Aluguel> historicoAlugueis;
 
 public:
-    Cliente(string habilitacao, vector<Aluguel> historicoAlugueis);
+    Cliente(string cpf, string nome, string endereco, string telefone, string habilitacao, vector<Aluguel> historicoAlugueis) : Usuario(cpf, nome, endereco, telefone)
+    {
+        this->habilitacao = habilitacao;
+        this->historicoAlugueis = historicoAlugueis;
+    };
 
-    float cotar_aluguel(Veiculo veiculo, string dataInicio, string dataFim);
-    Aluguel solicitar_aluguel(Veiculo veiculo, string dataInicio, string dataFim);
+    float cotar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim);
+    Aluguel solicitar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim);
     void devolver_veiculo(Aluguel aluguel, string dataDevolucao);
+    int daysBetweenDates(const Data &date1, const Data &date2);
+    int daysBetweenDates(const Data &Data1, const Data &date2);
+    ;
+    bool isDatePast(const Data &date);
 };
 
 #endif
