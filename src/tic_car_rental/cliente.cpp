@@ -5,22 +5,24 @@
 
 using namespace std;
 
-Cliente::Cliente(string habilitacao, vector<Aluguel> historicoAlugueis) : habilitacao(habilitacao), historicoAlugueis(historicoAlugueis),  {};
+Cliente::Cliente(string habilitacao, vector<Aluguel> historicoAlugueis) : habilitacao(habilitacao), historicoAlugueis(historicoAlugueis), {};
 
-float Cliente::cotar_aluguel(Veiculo veiculo, Data& dataInicio, Data& dataFim) {
+float Cliente::cotar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim)
+{
 
     int daysDifference = daysBetweenDates(dataInicio, dataFim);
     bool disponivel = true;
 
-    if(disponivel){
+    if (disponivel)
+    {
         return veiculo.getValorDiaria() * daysDifference;
-    }      
+    }
 
     return -1;
-
 };
 
-int daysBetweenDates(const Data& date1, const Data& date2) {
+int daysBetweenDates(const Data &date1, const Data &date2)
+{
     // Converte as datas em structs tm
     struct tm tm1 = {0};
     tm1.tm_year = date1.ano - 1900;
@@ -45,46 +47,56 @@ int daysBetweenDates(const Data& date1, const Data& date2) {
     return daysDifference;
 }
 
-bool isDatePast(const Data& date) {
+bool isDatePast(const Data &date)
+{
     // Obter a data atual
     time_t currentTime = time(nullptr);
-    struct tm* localTime = localtime(&currentTime);
+    struct tm *localTime = localtime(&currentTime);
 
     // Converte a data atual em struct Date
     Data currentDate;
     currentDate.dia = localTime->tm_mday;
-    currentDate.mes = localTime->tm_mon + 1; // tm_mon começa em 0
+    currentDate.mes = localTime->tm_mon + 1;     // tm_mon começa em 0
     currentDate.ano = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
 
     // Compara a data fornecida com a data atual
     if (date.ano < currentDate.ano ||
         (date.ano == currentDate.ano && date.mes < currentDate.mes) ||
-        (date.ano == currentDate.ano && date.mes == currentDate.mes && date.dia < currentDate.dia)) {
+        (date.ano == currentDate.ano && date.mes == currentDate.mes && date.dia < currentDate.dia))
+    {
         return true; // A data fornecida já passou
     }
 
     return false; // A data fornecida é igual ou futura em relação à data atual
 }
 
-Aluguel Cliente::solicitar_aluguel(Veiculo veiculo, Data& dataInicio, Data& dataFim) {
-        // int daysDifference = daysBetweenDates(dataInicio, dataFim);
-        // return veiculo.getValorDiaria * daysDifference;
-     
-    //  return Aluguel(
-    //     string identificador,
-    //     Veiculo veiculo,
-    //     Cliente cliente,
-    //     Funcionario funcionario,
-    //     Data dataInicio,
-    //     Data dataTermino,
-    //     Data dataDevolucao,
-    //     float desconto,
-    //     float adicional,
-    // );
+Aluguel Cliente::solicitar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim)
+{
+    // int daysDifference = daysBetweenDates(dataInicio, dataFim);
+    // return veiculo.getValorDiaria * daysDifference;
+    
+    // Obter a data atual
+    time_t currentTime = time(nullptr);
+    struct tm *localTime = localtime(&currentTime);
 
+    // Converte a data atual em struct Date
+    Data currentDate;
+    currentDate.dia = localTime->tm_mday;
+    currentDate.mes = localTime->tm_mon + 1;     // tm_mon começa em 0
+    currentDate.ano = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
+
+    return Aluguel(
+        1,
+        veiculo,
+        *this,
+        NULL,
+        dataInicio,
+        dataFim,
+        currentDate,
+        desconto,
+        adicional);
 };
 
-void Cliente::devolver_veiculo(Aluguel aluguel, string dataDevolucao) {
+void Cliente::devolver_veiculo(Aluguel aluguel, string dataDevolucao){
 
 };
-
