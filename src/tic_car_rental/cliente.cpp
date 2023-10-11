@@ -5,19 +5,17 @@
 
 using namespace std;
 
-Cliente::Cliente(string cpf, string nome, string endereco, string telefone, string habilitacao, vector<Aluguel> historicoAlugueis) : Usuario(cpf, nome, endereco, telefone) {};
+Cliente::Cliente(string cpf, string nome, string endereco, string telefone, string habilitacao, vector<Aluguel> historicoAlugueis) : Usuario(cpf, nome, endereco, telefone){};
 
 float Cliente::cotar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim)
 {
 
     int daysDifference = daysBetweenDates(dataInicio, dataFim);
-    bool disponivel = true;
 
-    if (disponivel)
+    if (veiculo.getDisponivel())
     {
         return veiculo.getValorDiaria() * daysDifference;
     }
-
     return -1;
 };
 
@@ -72,31 +70,33 @@ bool isDatePast(const Data &date)
 
 Aluguel Cliente::solicitar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim)
 {
-    // int daysDifference = daysBetweenDates(dataInicio, dataFim);
-    // return veiculo.getValorDiaria * daysDifference;
-    
-    // Obter a data atual
-    time_t currentTime = time(nullptr);
-    struct tm *localTime = localtime(&currentTime);
 
-    // Converte a data atual em struct Date
-    Data currentDate;
-    currentDate.dia = localTime->tm_mday;
-    currentDate.mes = localTime->tm_mon + 1;     // tm_mon começa em 0
-    currentDate.ano = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
-
-    return Aluguel(
-        1,
-        veiculo,
-        *this,
-        NULL,
-        dataInicio,
-        dataFim,
-        currentDate,
-        desconto,
-        adicional);
+    Aluguel aluguel;
+    Funcionario funcionario;
+    float desconto;
+    aluguel.setIdentificador("1"); // gerador de codigo aleatorio para identificador
+    aluguel.setCliente(*this);
+    aluguel.setVeiculo(veiculo);
+    aluguel.setDataInicio(dataInicio);
+    aluguel.setDataTermino(dataFim);
+    aluguel.setDesconto(desconto);
+    aluguel.setFuncionario(funcionario);
+    historicoAlugueis.push_back(aluguel);
+    return aluguel;
+    // return Aluguel(
+    //     1,
+    //     veiculo,
+    //     *this,
+    //     NULL,
+    //     dataInicio,
+    //     dataFim,
+    //     currentDate,
+    //     desconto,
+    //     adicional);
 };
 
-void Cliente::devolver_veiculo(Aluguel aluguel, string dataDevolucao){
-
+void Cliente::devolver_veiculo(Aluguel aluguel, string dataDevolucao)
+{
+    Veiculo veiculo = aluguel.getVeiculo();
+    veiculo.setDisponivel(true);
 };

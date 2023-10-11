@@ -13,7 +13,12 @@ class Usuario{
     string telefone;
     
     public:
-    Usuario(string cpf, string nome, string endereco, string telefone);
+    Usuario(string cpf, string nome, string endereco, string telefone){
+        this->cpf = cpf;
+        this->nome = nome;
+        this->endereco = endereco;
+        this->telefone = telefone;
+    };
 
     void setCPF(string cpf){
         this->cpf = cpf;

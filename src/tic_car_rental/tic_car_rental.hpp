@@ -6,6 +6,12 @@
 
 using namespace std;
 
+class Aluguel;
+class Usuario;
+class Cliente;
+class Veiculo;
+class Funcionario;
+
 struct Data
 {
     int ano;
@@ -27,6 +33,7 @@ private:
     float adicional;
 
 public:
+    Aluguel();
     Aluguel(string identificador,
             Veiculo veiculo,
             Cliente cliente,
@@ -40,12 +47,13 @@ public:
     void setIdentificador(string identificador);
     void setVeiculo(Veiculo veiculo);
     void setCliente(Cliente cliente);
-    void setFuncionario(Funcionario funcionario);
+    void setFuncionario(Funcionario& funcionario);
     void setDataInicio(Data dataInicio);
     void setDataTermino(Data dataTermino);
     void setDataDevolucao(Data dataDevolucao);
     void setAdicional(float adicional);
     void setDesconto(float desconto);
+    Veiculo getVeiculo();
     string getIdentificador();
     Cliente getCliente();
     Funcionario getFuncionario();
@@ -55,6 +63,7 @@ public:
     float getDesconto();
     float getAdicional();
     float calcularValorFinal();
+    float getValorEntreDatas();
 };
 
 class Veiculo
@@ -65,10 +74,12 @@ private:
     string modelo;
     int ano;
     float valor_diaria;
+    bool disponivel;
 
 public:
     Veiculo(string placa, string marca, string modelo, int ano, float valor_diaria);
-
+    bool getDisponivel();
+    void setDisponivel(bool disponivel);
     void setPlaca(string placa);
     void setMarca(string marca);
     void setModelo(string modelo);
@@ -79,6 +90,7 @@ public:
     string getModelo();
     int getAno();
     float getValorDiaria();
+
 };
 
 class Funcionario : public Usuario
@@ -87,6 +99,7 @@ private:
     vector<Aluguel> historicoAlugueis;
 
 public:
+Funcionario();
     Funcionario(string cpf, string nome, string endereco, string telefone, vector<Aluguel> historicoAlugueis)
         : Usuario(cpf, nome, endereco, telefone)
     {

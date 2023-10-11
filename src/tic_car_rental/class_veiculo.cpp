@@ -11,8 +11,15 @@ private:
     string modelo;
     int ano;
     float valor_diaria;
+    bool disponivel;
 
 public:
+    bool getDisponivel(){
+        return this->disponivel;
+    }
+    void setDisponivel(bool disponivel){
+        this->disponivel = disponivel;
+    }
     void setPlaca(string placa)
     {
         this->placa = placa;
@@ -62,5 +69,7 @@ public:
     {
         return this->valor_diaria;
     };
+
+    
 
 };
