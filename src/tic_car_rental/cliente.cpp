@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Cliente::Cliente(string habilitacao, vector<Aluguel> historicoAlugueis) : habilitacao(habilitacao), historicoAlugueis(historicoAlugueis), {};
+Cliente::Cliente(string cpf, string nome, string endereco, string telefone, string habilitacao, vector<Aluguel> historicoAlugueis) : Usuario(cpf, nome, endereco, telefone) {};
 
 float Cliente::cotar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim)
 {
