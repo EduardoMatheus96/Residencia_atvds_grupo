@@ -1,10 +1,4 @@
-#include <iostream>
-#include <map>
-#include <string>
-#include "classes/controle_de_tarefas.hpp"
-
-using namespace std;
-
+#include "controle_de_tarefas.hpp"
 
 int main()
 {
