@@ -1,7 +1,7 @@
 #include <iostream>
 #include <map>
 #include <string>
-#include "classes/biblioteca.hpp"
+#include "biblioteca.hpp"
 
 using namespace std;
 
@@ -20,9 +20,9 @@ int main(void)
     biblioteca.adicionaLivros(livro02);
     biblioteca.adicionaLivros(livro03);
     biblioteca.setEmprestimo(user01, livro02, "10 de Outubro de 2017");
-    biblioteca.verificaDisponibilidadeLivro(livro01);
-    biblioteca.verificaDisponibilidadeLivro(livro02);
-    biblioteca.verificaDisponibilidadeLivro(livro03);
+    // biblioteca.verificaDisponibilidadeLivro(livro01);
+    // biblioteca.verificaDisponibilidadeLivro(livro02);
+    // biblioteca.verificaDisponibilidadeLivro(livro03);
     biblioteca.listarLivrosEmprestados(user01);
     return 0;
 }
