@@ -4,18 +4,11 @@
 
 using namespace std;
 
-class Cliente;
-class Pacote;
-class Dependente;
-class Evento;
-class Roteiro;
-
 class Cliente
 {
 private:
     string nome;
     string cpf;
-    vector<Pacote> pacotes;
 
 public:
     Cliente(string nome, string cpf)
@@ -42,24 +35,6 @@ public:
     void setCPF(string cpf)
     {
         this->cpf = cpf;
-    }
-
-    vector<Pacote> getPacotes()
-    {
-        return this->pacotes;
-    }
-
-    void setPacote(Pacote pacote)
-    {
-        this->pacotes.push_back(pacote);
-    }
-
-    void pacotesContratados()
-    {
-        for (Pacote p : this->pacotes)
-        {
-            cout << p.getNome() << endl;
-        }
     }
 };
 
@@ -106,8 +81,7 @@ public:
     {
         this->dependenteDe = dependenteDe;
     }
-    string getCpfResponsavel()
-    {
+    string getCpfResponsavel(){
         dependenteDe->getCPF();
     }
 };
@@ -149,7 +123,7 @@ class Pacote
 {
 private:
     string nome;
-    vector<Evento *> eventos;
+    vector<Evento*> eventos;
 
 public:
     Pacote(/* args */) {}
@@ -169,44 +143,8 @@ public:
         eventos.push_back(evento);
     }
 
-    vector<Evento *> getEventos()
-    {
+    vector<Evento*> getEventos(){
         return eventos;
-    }
-
-    Pacote venderPacote(vector<Pacote> &pacotes, string nome)
-    {
-        Pacote pacote;
-
-        for (auto it = pacotes.begin(); it != pacotes.end(); ++it)
-        {
-            if (it->nome == nome)
-            {
-                pacote = *it;
-                // pacotes.erase(it);
-                return pacote;
-                break;
-            }
-        }
-
-        return pacote;
-    }
-
-    void getClientesPacote(vector<Cliente> todosClientes, Pacote pacote)
-    {
-        vector<Cliente> cleientesDoPacote;
-
-        for (Cliente c : todosClientes)
-        {
-
-            for (Pacote pac : c.getPacotes())
-            {
-                if (pac.getNome() == pacote.getNome())
-                {
-                    cout << "Cliente: " << c.getNome() << endl;
-                }
-            }
-        }
     }
 };
 
@@ -367,7 +305,7 @@ void listarEventos(vector<Evento> eventos)
 
     cout << "Evento cadastrados: " << endl;
     for (Evento n : eventos)
-    {
+    {   
         cout << "Nome do evento: " << n.getNome() << endl;
     }
 }
@@ -500,58 +438,52 @@ Dependente criarDepedente(vector<Cliente> clientes)
         {
             if (n.getCPF() == z.getCpfResponsavel())
             {
-
+                
                 cout << "Nome Depedente: " << z.getNome() << endl;
             }
         }
-
+        
     }
 }*/
 
-void listarClientes(vector<Cliente> clientes, vector<Dependente> dependentes)
-{
+void listarClientes(vector<Cliente> clientes, vector<Dependente> dependentes) {
     cout << "Clientes cadastrados: " << endl;
 
-    for (Cliente n : clientes)
-    {
+    for (Cliente n : clientes) {
         cout << "Nome do Cliente: " << n.getNome() << endl;
-
+        
         // Listar dependentes do cliente
         bool possuiDependentes = false;
-        for (Dependente z : dependentes)
-        {
-            if (n.getCPF() == z.getCpfResponsavel())
-            {
+        for (Dependente z : dependentes) {
+            if (n.getCPF() == z.getCpfResponsavel()) {
                 cout << "Nome do Dependente: " << z.getNome() << endl;
                 possuiDependentes = true;
             }
         }
-
-        if (!possuiDependentes)
-        {
+        
+        if (!possuiDependentes) {
             cout << "Nenhum dependente cadastrado." << endl;
         }
     }
 }
 
-void listarPacotes(vector<Pacote> pacotes)
-{
+void listarPacotes(vector<Pacote> pacotes){
     cout << "Pacotes cadastrados: " << endl;
 
-    for (Pacote n : pacotes)
-    {
+    for (Pacote n : pacotes) {
         cout << "Nome do pacote: " << n.getNome() << endl;
-
+        
         // Listar dependentes do cliente
 
-        for (Evento *z : n.getEventos())
-        {
+        for (Evento* z : n.getEventos()) {
 
-            cout << "Nome do evento: " << z->getNome() << endl;
-        }
+             cout << "Nome do evento: " << z->getNome() << endl;
+
+            }
         cout << "Esses são os eventos cadastrados!" << endl;
+        }
     }
-}
+
 
 int main()
 {
