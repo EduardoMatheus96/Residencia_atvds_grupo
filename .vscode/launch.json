@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/eduardo/Área de Trabalho/workspace/Residencia_atvds_grupo/src/PI-P021(Testes e erros - Eduardo)",
-      "program": "/home/eduardo/Área de Trabalho/workspace/Residencia_atvds_grupo/src/PI-P021(Testes e erros - Eduardo)/build/Release/outRelease",
+      "cwd": "/home/eduardo/Área de Trabalho/workspace/Residencia_atvds_grupo/src/Eduardo/PI-P021",
+      "program": "/home/eduardo/Área de Trabalho/workspace/Residencia_atvds_grupo/src/Eduardo/PI-P021/build/Release/outRelease",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
