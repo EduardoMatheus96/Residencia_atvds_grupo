@@ -1,33 +1,50 @@
 #include "biblioteca.hpp"
 
-Usuario::Usuario(string nome_usuario, string nome) : 
-    nome_usuario(nome_usuario), nome(nome) {};
+Usuario::Usuario(const string &nome_usuario, const string &nome)
+    : nome_usuario(nome_usuario), nome(nome) {}
 
-string Usuario::getNome_Usuario() const {
-    return this->nome_usuario;
+void Usuario::postar_tweet(const string& conteudo, const tm& data_criacao) {
+    Tweet* tweet = new Tweet(this, conteudo, data_criacao); // Cria um novo Tweet com 'new'
+    tweets.push_back(tweet); // Adiciona o ponteiro ao vetor de tweets
 }
 
-void Usuario::setNome_Usuario(string nome_usuario){
-    this->nome_usuario = nome_usuario;
+void Usuario::seguir(Usuario *usuario)
+{
+    seguindo.push_back(usuario);
+    usuario->seguidores.push_back(this);
 }
 
-string Usuario::getNome() const {
-    return this-> nome;
+vector<Tweet *> Usuario::receber_feed() const
+{
+    vector<Tweet *> feed;
+    for (const auto &usuario : seguindo)
+    {
+        for (const auto &tweet : usuario->tweets)
+        {
+            feed.push_back(tweet);
+        }
+    }
+    return feed;
 }
 
-void Usuario::setNome(string nome) {
-    this->nome = nome;
+const string &Usuario::get_nome_usuario() const
+{
+    return nome_usuario;
 }
 
-void Usuario::postar_tweet(Tweet& tweet) const {
-    
+const string &Usuario::get_nome() const
+{
+    return nome;
 }
 
-void Usuario::seguir_usuario(Usuario& usuario) {
-    this->seguindo.push_back(usuario);
-    usuario.seguidores.push_back(*this);
-}
+// Método para obter os tweets do usuário
+vector<Tweet> Usuario::get_tweets() const {
+    vector<Tweet> tweets_objetos;
+    tweets_objetos.reserve(tweets.size());  // Reservar espaço para evitar realocações
 
-vector<Usuario> Usuario::receber_feed() const {
-    
+    for (const auto& tweet_ptr : tweets) {
+        tweets_objetos.push_back(*tweet_ptr);  // Copiar o tweet apontado para o novo vetor
+    }
+
+    return tweets_objetos;
 }

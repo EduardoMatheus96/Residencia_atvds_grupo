@@ -1,131 +1,62 @@
 #ifndef COMPRAS_HPP
 #define COMPRAS_HPP
 #include <string>
-#include <iomanip>
-#include <ctime>
-#include <stdexcept>
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <sstream> 
+#include <iomanip> 
 
 using namespace std;
 
-class Usuario;
 class Tweet;
-class RedeSocial;
-class DataHora;
-
-class DataHora {
-private:
-    int dia;
-    int mes;
-    int ano;
-    int hora;
-    int minuto;
-
-public:
-    DataHora(int dia, int mes, int ano, int hora, int minuto) : dia(dia), mes(mes), ano(ano), hora(hora), minuto(minuto) {
-        if (!validarDataHora()) {
-            throw invalid_argument("Data ou hora inválida.");
-        }
-    }
-
-    bool validarDataHora() const {
-        // Verifica se o ano é válido (considerando um ano mínimo de 1900)
-        if (ano < 1900)
-            return false;
-
-        // Verifica se o mês está entre 1 e 12
-        if (mes < 1 || mes > 12)
-            return false;
-
-        // Verifica se o dia está dentro do intervalo válido para o mês
-        if (dia < 1 || dia > 31)
-            return false;
-
-        // Verifica se a hora está dentro do intervalo de 0 a 23
-        if (hora < 0 || hora > 23)
-            return false;
-
-        // Verifica se os minutos estão dentro do intervalo de 0 a 59
-        if (minuto < 0 || minuto > 59)
-            return false;
-
-        return true; // A data e hora são válidas
-    }
-
-
-    string obterDataHoraFormatada() const {
-        stringstream ss;
-        ss << setfill('0') << setw(2) << dia << "/" << setw(2) << mes << "/" << ano << " ";
-        ss << setw(2) << hora << ":" << setw(2) << minuto;
-        return ss.str();
-    }
-};
-
-class Usuario
-{
+class Usuario {
 private:
     string nome_usuario;
     string nome;
-    vector<Usuario> seguidores;
-    vector<Usuario> seguindo;
+    vector<Usuario*> seguidores;
+    vector<Usuario*> seguindo;
+    vector<Tweet*> tweets;
+
 public:
+    Usuario(const string& nome_usuario, const string& nome);
     Usuario() = default;
-    Usuario(string nome_usuario, string nome);
-    Usuario(Usuario &&) = default;
-    Usuario(const Usuario &) = default;
-    Usuario &operator=(Usuario &&) = default;
-    Usuario &operator=(const Usuario &) = default;
-    ~Usuario() = default;
-
-    string getNome_Usuario() const;
-    void setNome_Usuario(string nome_usuario);
-    string getNome() const;
-    void setNome(string nome);
-
-    void postar_tweet(Tweet& tweet) const;
-    void seguir_usuario(Usuario& usuario);
-    vector<Usuario> receber_feed() const;
-    
+    void postar_tweet(const string& conteudo, const tm& data_criacao);
+    void seguir(Usuario* usuario);
+    vector<Tweet*> receber_feed() const;
+    const string& get_nome_usuario() const;
+    const string& get_nome() const;
+    vector<Tweet> get_tweets() const;
 };
 
-class Tweet
-{
+class Tweet {
 private:
-    Usuario autor;
+    Usuario* autor;
     string conteudo;
-    DataHora datahora;
-    
-public:
-    Tweet() = default;
-    Tweet(Usuario autor, string conteudo, DataHora datahora);
-    Tweet(Tweet &&) = default;
-    Tweet(const Tweet &) = default;
-    Tweet &operator=(Tweet &&) = default;
-    Tweet &operator=(const Tweet &) = default;
-    ~Tweet() = default;
+    tm data_criacao;
 
-    
+public:
+    Tweet(Usuario* autor, const string& conteudo, const tm& data_criacao);
+    Tweet() = default;
+    Usuario* get_autor() const;
+    const string& get_conteudo() const;
+    void set_data_criacao(const tm& data);
+    tm get_data_criacao() const;
+    string tm_to_string(const tm t);
 };
 
-class RedeSocial
-{
+class RedeSocial {
 private:
-    vector<Usuario> usuarios;
-    vector<Tweet> tweets;
-public:
-    RedeSocial() = default;
-    RedeSocial(RedeSocial &&) = default;
-    RedeSocial(const RedeSocial &) = default;
-    RedeSocial &operator=(RedeSocial &&) = default;
-    RedeSocial &operator=(const RedeSocial &) = default;
-    ~RedeSocial() = default;
+    vector<Usuario*> usuarios;
+    vector<Tweet*> tweets;
 
-    void registrar_usuario(string nome_usuario, string nome);
-    Usuario buscar_usuario(string nome_usuario);
-    vector<Usuario> listar_usuarios();
-    vector<Tweet> listar_tweets();
-    
+public:
+    void registrar_usuario(const string& nome_usuario, const string& nome);
+    Usuario* buscar_usuario(const string& nome_usuario) const;
+    void listar_usuarios() const;
+    void listar_tweets() const;
+    const vector<Usuario*>& get_usuarios() const;
+    const vector<Tweet*>& get_tweets() const;
 };
 
 #endif
