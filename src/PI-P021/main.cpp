@@ -1,24 +1,28 @@
 #include <iostream>
 #include <map>
 #include <string>
-#include "classes/biblioteca.hpp"
+#include "biblioteca.hpp"
 
 using namespace std;
 
-int main()
+int main(void)
 {
-    // Adicionar alguns livros à biblioteca
-    Usuario::adicionarLivro(Livro("Livro 1", "Autor 1", 5));
-    Usuario::adicionarLivro(Livro("Livro 2", "Autor 2", 3));
-    Usuario::adicionarLivro(Livro("Livro 3", "Autor 3", 2));
-
-    // Realizar alguns empréstimos
-    Usuario::emprestarLivro("Livro 1", "Usuário A");
-    Usuario::emprestarLivro("Livro 2", "Usuário B");
-    Usuario::emprestarLivro("Livro 1", "Usuário C");
-
-    // Listar livros emprestados por um usuário específico
-    Usuario::listarLivrosEmprestados("Usuário A");
-
+    Usuario user01("Wilton");
+    Livro livro01("Harry Potter", "JK H.", "Edicao 02");
+    Livro livro02("Senhor dos Aneis", "Token", "Edicao 07");
+    Livro livro03("As Cronicas de Narnia", "Desconhecido", "Edicao 05");
+    map<Livro, int> estoque;
+    estoque[livro01] = 20;
+    estoque[livro02] = 70;
+    estoque[livro03] = 2;
+    Biblioteca biblioteca(estoque);
+    biblioteca.adicionaLivros(livro01);
+    biblioteca.adicionaLivros(livro02);
+    biblioteca.adicionaLivros(livro03);
+    biblioteca.setEmprestimo(user01, livro02, "10 de Outubro de 2017");
+    // biblioteca.verificaDisponibilidadeLivro(livro01);
+    // biblioteca.verificaDisponibilidadeLivro(livro02);
+    // biblioteca.verificaDisponibilidadeLivro(livro03);
+    biblioteca.listarLivrosEmprestados(user01);
     return 0;
 }
