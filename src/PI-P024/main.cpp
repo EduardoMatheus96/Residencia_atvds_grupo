@@ -10,6 +10,76 @@ class Dependente;
 class Evento;
 class Roteiro;
 
+class Pacote
+{
+private:
+    string nome;
+    vector<Evento *> eventos;
+
+public:
+    Pacote(string nome)
+    {
+        this->nome = nome;
+    }
+
+    Pacote();
+
+    string getNome()
+    {
+        return nome;
+    }
+
+    void setNome(string nome)
+    {
+        this->nome = nome;
+    }
+
+    void adicionarEvento(Evento *evento)
+    {
+        eventos.push_back(evento);
+    }
+
+    vector<Evento *> getEventos()
+    {
+        return eventos;
+    }
+
+    Pacote venderPacote(vector<Pacote> &pacotes, string nome)
+    {
+        Pacote pacote;
+
+        for (auto it = pacotes.begin(); it != pacotes.end(); ++it)
+        {
+            if (it->nome == nome)
+            {
+                pacote = *it;
+                // pacotes.erase(it);
+                return pacote;
+                break;
+            }
+        }
+
+        return pacote;
+    }
+
+    void getClientesPacote(vector<Cliente> todosClientes, Pacote pacote)
+    {
+        vector<Cliente> cleientesDoPacote;
+
+        for (Cliente c : todosClientes)
+        {
+
+            for (Pacote pac : c.getPacotes())
+            {
+                if (pac.getNome() == pacote.getNome())
+                {
+                    cout << "Cliente: " << c.getNome() << endl;
+                }
+            }
+        }
+    }
+};
+
 class Cliente
 {
 private:
@@ -58,7 +128,7 @@ public:
     {
         for (Pacote p : this->pacotes)
         {
-            cout << p.getNome() << endl;
+            cout << "Pacote: " << p.getNome() << endl;
         }
     }
 };
@@ -142,71 +212,6 @@ public:
     void setDuracao(string duracao)
     {
         this->duracao = duracao;
-    }
-};
-
-class Pacote
-{
-private:
-    string nome;
-    vector<Evento *> eventos;
-
-public:
-    Pacote(/* args */) {}
-
-    string getNome()
-    {
-        return nome;
-    }
-
-    void setNome(string nome)
-    {
-        this->nome = nome;
-    }
-
-    void adicionarEvento(Evento *evento)
-    {
-        eventos.push_back(evento);
-    }
-
-    vector<Evento *> getEventos()
-    {
-        return eventos;
-    }
-
-    Pacote venderPacote(vector<Pacote> &pacotes, string nome)
-    {
-        Pacote pacote;
-
-        for (auto it = pacotes.begin(); it != pacotes.end(); ++it)
-        {
-            if (it->nome == nome)
-            {
-                pacote = *it;
-                // pacotes.erase(it);
-                return pacote;
-                break;
-            }
-        }
-
-        return pacote;
-    }
-
-    void getClientesPacote(vector<Cliente> todosClientes, Pacote pacote)
-    {
-        vector<Cliente> cleientesDoPacote;
-
-        for (Cliente c : todosClientes)
-        {
-
-            for (Pacote pac : c.getPacotes())
-            {
-                if (pac.getNome() == pacote.getNome())
-                {
-                    cout << "Cliente: " << c.getNome() << endl;
-                }
-            }
-        }
     }
 };
 
@@ -574,5 +579,13 @@ int main()
     pacotes.push_back(criarPacote(eventos));
     clientes.push_back(criarCliente());
     dependentes.push_back(criarDepedente(clientes));
+
+    // Vender pacotes a cliente
+    Cliente cliente("Tetse", "09434539579345");
+
+    cliente.setPacote(pacotes.at(0).venderPacote(pacotes, "Teste"));
+    cliente.pacotesContratados();
+    pacotes.at(0).getClientesPacote(clientes, pacotes.at(0));
+
     return 0;
 }
