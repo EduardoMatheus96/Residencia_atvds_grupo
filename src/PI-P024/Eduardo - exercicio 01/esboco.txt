@@ -1,0 +1,142 @@
+#ifndef CONTROLE_HPP
+#define CONTROLE_HPP
+#include <string>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+class Cliente;
+class Dependente;
+class Pacote;
+class Evento;
+class Roteiro;
+class Deslocamento;
+class Pernoite;
+
+class Roteiro : protected Evento
+{
+private:
+
+public:
+    Roteiro() = default;
+    Roteiro(Roteiro &&) = default;
+    Roteiro(const Roteiro &) = default;
+    Roteiro &operator=(Roteiro &&) = default;
+    Roteiro &operator=(const Roteiro &) = default;
+    ~Roteiro() = default;
+
+    
+};
+
+class Deslocamento : protected Evento
+{
+private:
+    
+public:
+    Deslocamento() = default;
+    Deslocamento(Deslocamento &&) = default;
+    Deslocamento(const Deslocamento &) = default;
+    Deslocamento &operator=(Deslocamento &&) = default;
+    Deslocamento &operator=(const Deslocamento &) = default;
+    ~Deslocamento() = default;
+
+    
+};
+
+class Pernoite : protected Evento
+{
+private:
+    
+public:
+    Pernoite() = default;
+    Pernoite(Pernoite &&) = default;
+    Pernoite(const Pernoite &) = default;
+    Pernoite &operator=(Pernoite &&) = default;
+    Pernoite &operator=(const Pernoite &) = default;
+    ~Pernoite() = default;
+
+    
+};
+
+class Evento
+{
+private:
+    int duracao;
+public:
+    Evento() = default;
+    Evento(int duracao);
+    Evento(Evento &&) = default;
+    Evento(const Evento &) = default;
+    Evento &operator=(Evento &&) = default;
+    Evento &operator=(const Evento &) = default;
+    ~Evento() = default;
+
+    
+};
+
+class Pacote
+{
+private:
+    string nome;
+    const vector<Cliente>& clientes;
+    const vector<Evento>& eventos;
+public:
+    Pacote() = default;
+    Pacote(string nome);
+    Pacote(Pacote &&) = default;
+    Pacote(const Pacote &) = default;
+    Pacote &operator=(Pacote &&) = default;
+    Pacote &operator=(const Pacote &) = default;
+    ~Pacote() = default;
+
+    
+};
+
+
+class Cliente
+{
+private:
+    string nome;
+    string cpf;
+    const vector<Pacote>& pacotes;
+public:
+    Cliente() = default;
+    Cliente(string nome, string cpf);
+    Cliente(Cliente &&) = default;
+    Cliente(const Cliente &) = default;
+    Cliente &operator=(Cliente &&) = default;
+    Cliente &operator=(const Cliente &) = default;
+    ~Cliente() = default;
+
+    
+};
+
+class Dependente
+{
+private:
+    Cliente *dependente_de;
+    string nome;
+public:
+    Dependente() = default;
+    Dependente(Cliente cliente, string nome); // No .cpp o cliente do dependente vem como &cliente;
+    Dependente(Dependente &&) = default;
+    Dependente(const Dependente &) = default;
+    Dependente &operator=(Dependente &&) = default;
+    Dependente &operator=(const Dependente &) = default;
+    ~Dependente() = default;
+    
+};
+
+#endif
+
+
+/*
+    Minhas Observações :
+    - A classe dependete compoe a classe cliente porque so existe dependente de um cliente.
+    - Para a cardinalidade entre Cliente e Pacote(M para N) eu criei 1 vector<Pacote>
+    na classe Cliente e um vector<Cliente> na classe Pacote.
+    - Evento pode ou nao existir sem a classe Pacote entao eu criei ele usando agregação.
+    - As classes Roteiro, Deslocamento e Pernoite Herdam da classe Evento assim como
+    esta mostrando o diagrama.
+*/
