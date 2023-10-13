@@ -71,6 +71,7 @@ private:
     vector<Usuario> seguindo;
 public:
     Usuario() = default;
+    Usuario(string nome_usuario, string nome);
     Usuario(Usuario &&) = default;
     Usuario(const Usuario &) = default;
     Usuario &operator=(Usuario &&) = default;
@@ -83,7 +84,7 @@ public:
     void setNome(string nome);
 
     void postar_tweet(Tweet& tweet) const;
-    void seguir_usuario(Usuario& usuario) const;
+    void seguir_usuario(Usuario& usuario);
     vector<Usuario> receber_feed() const;
     
 };
@@ -97,6 +98,7 @@ private:
     
 public:
     Tweet() = default;
+    Tweet(Usuario autor, string conteudo, DataHora datahora);
     Tweet(Tweet &&) = default;
     Tweet(const Tweet &) = default;
     Tweet &operator=(Tweet &&) = default;
