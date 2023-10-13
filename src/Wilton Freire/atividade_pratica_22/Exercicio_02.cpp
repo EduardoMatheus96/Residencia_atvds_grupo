@@ -136,7 +136,7 @@ int main()
     int escolha;
     do
     {
-        cout << "Menu:" << endl;
+        cout << "\nMenu:" << endl;
         cout << "1. Adicionar tarefa" << endl;
         cout << "2. Marcar tarefa como concluida" << endl;
         cout << "3. Listar tarefas pendentes" << endl;
@@ -162,6 +162,7 @@ int main()
             int indice;
             cin >> indice;
             GerenciadorTarefas::marcarTarefaConcluida(indice);
+            cout << "Tarefa concluida com sucesso!" << endl;
             break;
         }
         case 3:
