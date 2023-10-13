@@ -95,17 +95,31 @@ vector<Usuario::Emprestimo> Usuario::emprestimos;
 int main()
 {
     // Adicionar alguns livros à biblioteca
-    Usuario::adicionarLivro(Livro("Livro 1", "Autor 1", 5));
-    Usuario::adicionarLivro(Livro("Livro 2", "Autor 2", 3));
-    Usuario::adicionarLivro(Livro("Livro 3", "Autor 3", 2));
+    Usuario::adicionarLivro(Livro("Dom Quixote", "Miguel de Cervantes", 3));
+    Usuario::adicionarLivro(Livro("Um conto de duas cidades", "Charles Dickens", 4));
+    Usuario::adicionarLivro(Livro("O Alquimista", "Paulo Coelho", 2));
+    Usuario::adicionarLivro(Livro("O Pequeno Principe", "Antoine de Saint-Exupéry", 5));
+    Usuario::adicionarLivro(Livro("Harry Potter e a Pedra Filosofal", "J. K. Rowling", 2));
+    Usuario::adicionarLivro(Livro("O Hobbit", "J.R.R. Tolkien", 2));
 
     // Realizar alguns empréstimos
-    Usuario::emprestarLivro("Livro 1", "Usuario A");
-    Usuario::emprestarLivro("Livro 2", "Usuario B");
-    Usuario::emprestarLivro("Livro 1", "Usuario C");
+    Usuario::emprestarLivro("Dom Quixote", "Wilton");
+    Usuario::emprestarLivro("O Alquimista", "Giusepp");
+    Usuario::emprestarLivro("Harry Potter e a Pedra Filosofal", "Eduardo");
+    Usuario::emprestarLivro("O Hobbit", "Mateus");
+    Usuario::emprestarLivro("O Alquimista", "Welvis");
+    Usuario::emprestarLivro("O Alquimista", "Wilton");
+    Usuario::emprestarLivro("Dom Quixote", "Mateus");
+    Usuario::emprestarLivro("O Pequeno Príncipe", "Eduardo");
+    Usuario::emprestarLivro("Um conto de duas cidades", "Giusepp");
+
 
     // Listar livros emprestados por um usuário específico
-    Usuario::listarLivrosEmprestados("Usuario A");
+    Usuario::listarLivrosEmprestados("Wilton");
+    Usuario::listarLivrosEmprestados("Eduardo");
+    Usuario::listarLivrosEmprestados("Welvis");
+    Usuario::listarLivrosEmprestados("Mateus");
+    Usuario::listarLivrosEmprestados("Giusepp");
 
     return 0;
 }
