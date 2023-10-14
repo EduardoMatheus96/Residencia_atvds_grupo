@@ -82,9 +82,10 @@ private:
     string duracao;
 
 public:
-    Evento(string nome, string duracao){
+    Evento(string nome, string duracao)
+    {
         this->nome = nome;
-        this-> duracao = duracao;
+        this->duracao = duracao;
     }
 
     string getNome()
@@ -106,18 +107,18 @@ public:
         this->duracao = duracao;
     }
 
-    virtual void imprimir() const {
+    virtual void imprimir() const
+    {
         cout << "Nome: " << nome << endl;
         cout << "Duração: " << duracao << endl;
     }
-    
 };
 
 class Pacote
 {
 private:
     string nome;
-    vector<Evento*> eventos;
+    vector<Evento *> eventos;
 
 public:
     Pacote(/* args */) {}
@@ -145,7 +146,8 @@ private:
     string atracao;
 
 public:
-    Roteiro(string nome, string duracao, string local, string atracao): Evento(nome, duracao) {
+    Roteiro(string nome, string duracao, string local, string atracao) : Evento(nome, duracao)
+    {
         this->local = local;
         this->atracao = atracao;
     }
@@ -170,7 +172,8 @@ public:
         this->atracao = atracao;
     }
 
-    void imprimir() const {
+    void imprimir() const
+    {
         Evento::imprimir();
         cout << "Local: " << local << endl;
         cout << "Atração: " << atracao << endl;
@@ -184,7 +187,8 @@ private:
     string tipoTransporte;
 
 public:
-    Deslocamento(string nome, string duracao, float distancia, string tipoTransporte): Evento(nome, duracao) {
+    Deslocamento(string nome, string duracao, float distancia, string tipoTransporte) : Evento(nome, duracao)
+    {
         this->distancia = distancia;
         this->tipoTransporte = tipoTransporte;
     }
@@ -209,7 +213,8 @@ public:
         this->tipoTransporte = tipoTransporte;
     }
 
-    void imprimir() const{
+    void imprimir() const
+    {
         Evento::imprimir();
         cout << "Distância: " << distancia << " km" << endl;
         cout << "Tipo de Transporte: " << tipoTransporte << endl;
@@ -222,7 +227,8 @@ private:
     string local;
 
 public:
-    Pernoite(string nome, string distancia, string local): Evento(nome, distancia) {
+    Pernoite(string nome, string distancia, string local) : Evento(nome, distancia)
+    {
         this->local = local;
     }
 
@@ -235,25 +241,9 @@ public:
     {
         this->local = local;
     }
-    void imprimir() const {
+    void imprimir() const
+    {
         Evento::imprimir();
         cout << "Local: " << local << " " << endl;
     }
 };
-
-
-
-
-int main() {
-    vector<Evento> eventos;
-    char continuar;
-
-    eventos.push_back(Roteiro("Roteiro 1", "2 horas", "Local 1", "Atração 1"));
-    eventos.push_back(Deslocamento("Deslocamento 1", "3 horas", 100.0, "Ônibus"));
-    eventos.push_back(Pernoite("Pernoite 1", "1 noite", "Hotel 1"));
-    for (const Evento& evento : eventos) {
-        evento.imprimir(); // Supondo que a classe Evento tenha um método "imprimir"
-    }
-
-    return 0;
-}
