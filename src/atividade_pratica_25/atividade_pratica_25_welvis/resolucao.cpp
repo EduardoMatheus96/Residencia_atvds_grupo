@@ -201,24 +201,23 @@ vector<Tweet> RedeSocial::listar_tweets(vector<Usuario> usuarios) const
 
 int main()
 {
-    // Exemplo de uso da rede social.
     RedeSocial rede_social;
 
-    rede_social.registrar_usuario("usuario1", "Pedro");
-    rede_social.registrar_usuario("usuario2", "Joao");
+    rede_social.registrar_usuario("usuario1", "Patrik");
+    rede_social.registrar_usuario("usuario2", "Alberto");
 
     Usuario *usuario1 = rede_social.buscar_usuario("usuario1");
     Usuario *usuario2 = rede_social.buscar_usuario("usuario2");
 
     usuario1->postar_tweet("Meu primeiro tweet!");
+    usuario1->postar_tweet("Meu segundo tweet!");
     usuario2->postar_tweet("Olá, mundo!");
 
     usuario1->seguir(usuario2);
+    usuario2->seguir(usuario1);
 
     vector<Tweet> feed_usuario1 = usuario1->receber_feed();
     vector<Tweet> feed_usuario2 = usuario2->receber_feed();
-
-    cout << "AAAAAAAAAAAAAAAA" << endl;
 
     cout << "Feed de Usuario 1:" << endl;
     for (const Tweet &tweet : feed_usuario1)
