@@ -1,11 +1,11 @@
-#include <string>
-#include <vector>
 #include "tic_car_rental.hpp"
-#include <ctime>
 
 using namespace std;
 
-Cliente::Cliente(string cpf, string nome, string endereco, string telefone, string habilitacao, vector<Aluguel> historicoAlugueis) : Usuario(cpf, nome, endereco, telefone){};
+Cliente::Cliente(string cpf, string nome, string endereco, string telefone, string habilitacao, vector<Aluguel> historicoAlugueis) : Usuario(cpf, nome, endereco, telefone){
+    this->habilitacao = habilitacao;
+    this->historicoAlugueis = historicoAlugueis;
+};
 
 float Cliente::cotar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim)
 {
@@ -19,7 +19,7 @@ float Cliente::cotar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim)
     return -1;
 };
 
-int daysBetweenDates(const Data &date1, const Data &date2)
+int Cliente::daysBetweenDates(const Data &date1, const Data &date2)
 {
     // Converte as datas em structs tm
     struct tm tm1 = {0};
@@ -45,7 +45,7 @@ int daysBetweenDates(const Data &date1, const Data &date2)
     return daysDifference;
 }
 
-bool isDatePast(const Data &date)
+bool Cliente::isDatePast(const Data &date)
 {
     // Obter a data atual
     time_t currentTime = time(nullptr);

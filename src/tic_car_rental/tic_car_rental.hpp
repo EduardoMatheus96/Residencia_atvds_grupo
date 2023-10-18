@@ -18,6 +18,94 @@ struct Data
     int mes;
     int dia;
 };
+class Veiculo
+{
+private:
+    string placa;
+    string marca;
+    string modelo;
+    int ano;
+    float valor_diaria;
+    bool disponivel;
+
+public:
+    Veiculo(string placa, string marca, string modelo, int ano, float valor_diaria);
+    bool getDisponivel();
+    void setDisponivel(bool disponivel);
+    void setPlaca(string placa);
+    void setMarca(string marca);
+    void setModelo(string modelo);
+    void setAno(int ano);
+    void setValorDiaria(float valor_diaria);
+    string getPlaca();
+    string getMarca();
+    string getModelo();
+    int getAno();
+    float getValorDiaria();
+
+};
+class Usuario
+{
+private:
+    string cpf;
+    string nome;
+    string endereco;
+    string telefone;
+
+public:
+    Usuario(string cpf, string nome, string endereco, string telefone);
+    void setCPF(string cpf);
+    void setNome(string nome);
+    void setEndereco(string endereco);
+    void setTelefone(string telefone);
+
+    string getCPF();
+    string getNome();
+    string getEndereco();
+    string getTelefone();
+};
+
+class Funcionario : public Usuario
+{
+private:
+    vector<Aluguel> historicoAlugueis;
+
+public:
+Funcionario();
+Funcionario(string cpf, string nome, string endereco, string telefone, vector<Aluguel> historicoAlugueis);
+    // Funcionario(string cpf, string nome, string endereco, string telefone, vector<Aluguel> historicoAlugueis)
+    //     : Usuario(cpf, nome, endereco, telefone)
+    // {
+    //     this->historicoAlugueis = historicoAlugueis;
+    // };
+
+    Aluguel alugarVeiculo(Cliente cliente, Veiculo veiculo, Data DataInicio, Data DataTermino);
+
+    void finalizarAluguel(Aluguel aluguel, Data dataDevolucao);
+};
+
+class Cliente : public Usuario
+{
+private:
+    string habilitacao;
+    vector<Aluguel> historicoAlugueis;
+
+public:
+    Cliente();
+    Cliente(string cpf, string nome, string endereco, string telefone, string habilitacao, vector<Aluguel> historicoAlugueis);
+    // Cliente(string cpf, string nome, string endereco, string telefone, string habilitacao, vector<Aluguel> historicoAlugueis) : Usuario(cpf, nome, endereco, telefone)
+    // {
+    //     this->habilitacao = habilitacao;
+    //     this->historicoAlugueis = historicoAlugueis;
+    // };
+
+    float cotar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim);
+    Aluguel solicitar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim);
+    void devolver_veiculo(Aluguel aluguel, string dataDevolucao);
+    int daysBetweenDates(const Data &date1, const Data &date2);
+    // int daysBetweenDates(const Data &Data1, const Data &date2);
+    bool isDatePast(const Data &date);
+};
 
 class Aluguel
 {
@@ -60,98 +148,14 @@ public:
     Data getDataInicio();
     Data getDataTermino();
     Data getDataDevolucao();
+    int daysBetweenDates(const Data &date1, const Data &date2);
+    float getValorEntreDatas(Data dataInicio, Data dataFim);
+    bool isDatePast(const Data &date);
     float getDesconto();
     float getAdicional();
     float calcularValorFinal();
     float getValorEntreDatas();
 };
 
-class Veiculo
-{
-private:
-    string placa;
-    string marca;
-    string modelo;
-    int ano;
-    float valor_diaria;
-    bool disponivel;
-
-public:
-    Veiculo(string placa, string marca, string modelo, int ano, float valor_diaria);
-    bool getDisponivel();
-    void setDisponivel(bool disponivel);
-    void setPlaca(string placa);
-    void setMarca(string marca);
-    void setModelo(string modelo);
-    void setAno(int ano);
-    void setValorDiaria(float valor_diaria);
-    string getPlaca();
-    string getMarca();
-    string getModelo();
-    int getAno();
-    float getValorDiaria();
-
-};
-
-class Funcionario : public Usuario
-{
-private:
-    vector<Aluguel> historicoAlugueis;
-
-public:
-Funcionario();
-    Funcionario(string cpf, string nome, string endereco, string telefone, vector<Aluguel> historicoAlugueis)
-        : Usuario(cpf, nome, endereco, telefone)
-    {
-        this->historicoAlugueis = historicoAlugueis;
-    };
-
-    Aluguel alugarVeiculo(Cliente cliente, Veiculo veiculo, Data DataInicio, Data DataTermino);
-
-    void finalizarAluguel(Aluguel aluguel, Data dataDevolucao);
-};
-
-class Usuario
-{
-private:
-    string cpf;
-    string nome;
-    string endereco;
-    string telefone;
-
-public:
-    Usuario(string cpf, string nome, string endereco, string telefone);
-    void setCPF(string cpf);
-    void setNome(string nome);
-    void setEndereco(string endereco);
-    void setTelefone(string telefone);
-
-    string getCPF();
-    string getNome();
-    string getEndereco();
-    string getTelefone();
-};
-
-class Cliente : public Usuario
-{
-private:
-    string habilitacao;
-    vector<Aluguel> historicoAlugueis;
-
-public:
-    Cliente(string cpf, string nome, string endereco, string telefone, string habilitacao, vector<Aluguel> historicoAlugueis) : Usuario(cpf, nome, endereco, telefone)
-    {
-        this->habilitacao = habilitacao;
-        this->historicoAlugueis = historicoAlugueis;
-    };
-
-    float cotar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim);
-    Aluguel solicitar_aluguel(Veiculo veiculo, Data &dataInicio, Data &dataFim);
-    void devolver_veiculo(Aluguel aluguel, string dataDevolucao);
-    int daysBetweenDates(const Data &date1, const Data &date2);
-    int daysBetweenDates(const Data &Data1, const Data &date2);
-    ;
-    bool isDatePast(const Data &date);
-};
 
 #endif

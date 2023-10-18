@@ -1,129 +1,113 @@
-#include <iostream>
-#include <string>
-#include <vector>
 #include "tic_car_rental.hpp"
-using namespace std;
+// struct Data
+// {
+//     int ano;
+//     short mes;
+//     short dia;
+// };
 
-struct Data
-{
-    int ano;
-    short mes;
-    short dia;
-};
+Aluguel::Aluguel(string identificador,
+            Veiculo veiculo,
+            Cliente cliente,
+            Funcionario funcionario,
+            Data dataInicio,
+            Data dataTermino,
+            Data dataDevolucao,
+            float desconto,
+            float adicional) :
+            identificador(identificador),
+            veiculo(veiculo),
+            cliente(cliente),
+            funcionario(funcionario),
+            dataInicio(dataInicio),
+            dataTermino(dataTermino),
+            dataDevolucao(dataDevolucao),
+            desconto(desconto),
+            adicional(adicional) {}
 
-class Aluguel
-{
-private:
-    string identificador;
-    Veiculo veiculo;
-    Cliente cliente;
-    Funcionario funcionario;
-    Data dataInicio;
-    Data dataTermino;
-    Data dataDevolucao;
-    float desconto;
-    float adicional;
 
-public:
-    void setIdentificador(string identificador)
+    void Aluguel::setIdentificador(string identificador)
     {
         this->identificador = identificador;
     }
 
-    void setVeiculo(Veiculo veiculo)
+    void Aluguel::setVeiculo(Veiculo veiculo)
     {
         this->veiculo = veiculo;
     }
-    void setCliente(Cliente cliente)
+    void Aluguel::setCliente(Cliente cliente)
     {
         this->cliente = cliente;
     }
-    void setFuncionario(Funcionario funcionario)
+    void Aluguel::setFuncionario(Funcionario& funcionario)
     {
         this->funcionario = funcionario;
     }
-    void setDataInicio(Data dataInicio)
+    void Aluguel::setDataInicio(Data dataInicio)
     {
         this->dataInicio = dataInicio;
     }
-    void setDataTermino(Data dataTermino)
+    void Aluguel::setDataTermino(Data dataTermino)
     {
         this->dataTermino = dataTermino;
     }
-    void setDataDevolucao(Data dataDevolucao)
+    void Aluguel::setDataDevolucao(Data dataDevolucao)
     {
         this->dataDevolucao = dataDevolucao;
     }
-    void setDesconto(float desconto)
+    void Aluguel::setDesconto(float desconto)
     {
         this->desconto = desconto;
     }
-    void setAdicional(float adicional)
+    void Aluguel::setAdicional(float adicional)
     {
         this->adicional = adicional;
     }
-    Veiculo getVeiculo()
+    Veiculo Aluguel::getVeiculo()
     {
         return veiculo;
     }
-    string getIdentificador()
+    string Aluguel::getIdentificador()
     {
         return identificador;
     }
-    Cliente getCliente()
+    Cliente Aluguel::getCliente()
     {
         return cliente;
     }
-    Funcionario getFuncionario()
+    Funcionario Aluguel::getFuncionario()
     {
         return funcionario;
     }
-    Data getDataInicio()
+    Data Aluguel::getDataInicio()
     {
         return dataInicio;
     }
-    Data getDataTermino()
+    Data Aluguel::getDataTermino()
     {
         return dataTermino;
     }
-    Data getDataDevolucao()
+    Data Aluguel::getDataDevolucao()
     {
         return dataDevolucao;
     }
-    float getDesconto()
+    float Aluguel::getDesconto()
     {
         return desconto;
     }
-    float getAdicional()
+    float Aluguel::getAdicional()
     {
         return adicional;
     }
 
-    float calcularValorFinal()
+    float Aluguel::calcularValorFinal()
     {
         float valorFinal = 0;
         valorFinal = (veiculo.getValorDiaria() * cliente.daysBetweenDates(getDataDevolucao(), getDataInicio())) + (getAdicional() - getDesconto());
         return valorFinal;
     }
 
-    float getValorEntreDatas(Data dataInicio, Data dataFim)
-    {
-
-        int daysDifference = daysBetweenDates(dataInicio, dataFim);
-
-        // Obter a data atual
-        time_t currentTime = time(nullptr);
-        struct tm *localTime = localtime(&currentTime);
-
-        // Converte a data atual em struct Date
-        Data currentDate;
-        currentDate.dia = localTime->tm_mday;
-        currentDate.mes = localTime->tm_mon + 1;     // tm_mon começa em 0
-        currentDate.ano = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
-
-        return veiculo.getValorDiaria() * daysDifference;
-    }
-    int daysBetweenDates(const Data &date1, const Data &date2)
+    int Aluguel::daysBetweenDates(const Data &date1, const Data &date2)
     {
         // Converte as datas em structs tm
         struct tm tm1 = {0};
@@ -149,7 +133,26 @@ public:
         return daysDifference;
     }
 
-    bool isDatePast(const Data &date)
+    float Aluguel::getValorEntreDatas(Data dataInicio, Data dataFim)
+    {
+
+        int daysDifference = daysBetweenDates(dataInicio, dataFim);
+
+        // Obter a data atual
+        time_t currentTime = time(nullptr);
+        struct tm *localTime = localtime(&currentTime);
+
+        // Converte a data atual em struct Date
+        Data currentDate;
+        currentDate.dia = localTime->tm_mday;
+        currentDate.mes = localTime->tm_mon + 1;     // tm_mon começa em 0
+        currentDate.ano = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
+
+        return veiculo.getValorDiaria() * daysDifference;
+    }
+    
+
+    bool Aluguel::isDatePast(const Data &date)
     {
         // Obter a data atual
         time_t currentTime = time(nullptr);
@@ -171,4 +174,3 @@ public:
 
         return false; // A data fornecida é igual ou futura em relação à data atual
     }
-};

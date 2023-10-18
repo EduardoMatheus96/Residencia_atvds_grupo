@@ -1,75 +1,63 @@
-#include <iostream>
-#include <string>
+#include "tic_car_rental.hpp"
 
-using namespace std;
+Veiculo::Veiculo(string placa, string marca, string modelo, int ano, float valor_diaria) :
+    placa(placa), marca(marca), modelo(modelo), ano(ano), valor_diaria(valor_diaria) {}
 
-class Veiculo
-{
-private:
-    string placa;
-    string marca;
-    string modelo;
-    int ano;
-    float valor_diaria;
-    bool disponivel;
-
-public:
-    bool getDisponivel(){
+    bool Veiculo::getDisponivel(){
         return this->disponivel;
     }
-    void setDisponivel(bool disponivel){
+    void Veiculo::setDisponivel(bool disponivel){
         this->disponivel = disponivel;
     }
-    void setPlaca(string placa)
+    void Veiculo::setPlaca(string placa)
     {
         this->placa = placa;
     };
 
-    void setMarca(string marca)
+    void Veiculo::setMarca(string marca)
     {
         this->marca = marca;
     };
 
-    void setModelo(string modelo)
+    void Veiculo::setModelo(string modelo)
     {
         this->modelo = modelo;
     };
 
-    void setAno(int ano)
+    void Veiculo::setAno(int ano)
     {
         this->ano = ano;
     };
 
-    void setValorDiaria(float valor_diaria)
+    void Veiculo::setValorDiaria(float valor_diaria)
     {
         this->valor_diaria = valor_diaria;
     };
     
-    string getPlaca()
+    string Veiculo::getPlaca()
     {
         return this->placa;
     };
 
-    string getMarca()
+    string Veiculo::getMarca()
     {
         return this->marca;
     };
 
-    string getModelo()
+    string Veiculo::getModelo()
     {
         return this->modelo;
     };
 
-    int getAno()
+    int Veiculo::getAno()
     {
         return this->ano;
     };
 
-    float getValorDiaria()
+    float Veiculo::getValorDiaria()
     {
         return this->valor_diaria;
     };
 
     
 
-};

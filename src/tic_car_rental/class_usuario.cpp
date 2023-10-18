@@ -1,49 +1,44 @@
-#include <iostream>
-#include <string>
-#include <vector>
+#include "tic_car_rental.hpp"
 
+Usuario::Usuario(string cpf, string nome, string endereco, string telefone) : cpf(cpf), nome(nome), endereco(endereco), telefone(telefone)
+{
+    this->cpf = cpf;
+    this->nome = nome;
+    this->endereco = endereco;
+    this->telefone = telefone;
+}
 
-using namespace std;
+void Usuario::setCPF(string cpf)
+{
+    this->cpf = cpf;
+}
 
-class Usuario{
-    private:
-    string cpf;
-    string nome;
-    string endereco;
-    string telefone;
-    
-    public:
-    Usuario(string cpf, string nome, string endereco, string telefone){
-        this->cpf = cpf;
-        this->nome = nome;
-        this->endereco = endereco;
-        this->telefone = telefone;
-    };
+void Usuario::setNome(string nome)
+{
+    this->nome = nome;
+}
+void Usuario::setEndereco(string endereco)
+{
+    this->endereco = endereco;
+}
+void Usuario::setTelefone(string telefone)
+{
+    this->telefone = telefone;
+}
 
-    void setCPF(string cpf){
-        this->cpf = cpf;
-    }
-
-    void setNome(string nome){
-        this->nome = nome;
-    }
-    void setEndereco(string endereco){
-        this->endereco = endereco;
-    }
-    void setTelefeone(string telefone){
-        this->telefone = telefone;
-    }
-
-    string getCPF(){
-        return cpf;
-    }
-    string getNome(){
-        return nome;
-    }
-    string getEndereco(){
-        return endereco;
-    }
-    string getTelefone(){
-        return telefone;
-    }
-};
+string Usuario::getCPF()
+{
+    return cpf;
+}
+string Usuario::getNome()
+{
+    return nome;
+}
+string Usuario::getEndereco()
+{
+    return endereco;
+}
+string Usuario::getTelefone()
+{
+    return telefone;
+}
