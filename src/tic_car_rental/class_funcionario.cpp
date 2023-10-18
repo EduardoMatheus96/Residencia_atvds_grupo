@@ -30,12 +30,12 @@ void Funcionario::finalizarAluguel(Aluguel aluguel, Data dataDevolucao)
     }
 }
 
-Aluguel Funcionario::alugarVeiculo(Cliente cliente, Veiculo veiculo, Data DataInicio, Data DataTermino)
-{
-    Aluguel aluguel;
-    aluguel.setCliente(cliente);
-    aluguel.setVeiculo(veiculo);
-    aluguel.setDataInicio(DataInicio);
-    aluguel.setDataTermino(DataTermino);
-    return aluguel;
-}
+// Aluguel Funcionario::alugarVeiculo(Cliente cliente, Veiculo veiculo, Data DataInicio, Data DataTermino)
+// {
+//     Aluguel aluguel;
+//     aluguel.setCliente(cliente);
+//     aluguel.setVeiculo(veiculo);
+//     aluguel.setDataInicio(DataInicio);
+//     aluguel.setDataTermino(DataTermino);
+//     return aluguel;
+// }
