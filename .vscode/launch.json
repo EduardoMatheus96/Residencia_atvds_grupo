@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/eduardo/Área de Trabalho/workspace/Residencia_atvds_grupo/src/Eduardo/PI-P025",
-      "program": "/home/eduardo/Área de Trabalho/workspace/Residencia_atvds_grupo/src/Eduardo/PI-P025/build/Release/outRelease",
+      "cwd": "/home/eduardo-matheus-souto/Área de trabalho/Workspace/Residencia_atvds_grupo/Residencia_atvds_grupo/src/Eduardo/aula_33/exercicio03",
+      "program": "/home/eduardo-matheus-souto/Área de trabalho/Workspace/Residencia_atvds_grupo/Residencia_atvds_grupo/src/Eduardo/aula_33/exercicio03/build/Release/outRelease",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
