@@ -2,13 +2,13 @@
 #include <vector>
 #include <string>
 #include <ctime>
+
 using namespace std;
 
 class Tweet
 {
 public:
-    Tweet(Usuario *autor, const string &conteudo)
-        : autor(autor), conteudo(conteudo)
+    Tweet(Usuario *autor, const string &conteudo): autor(autor), conteudo(conteudo)
     {
         time_t now = time(0);
         data_criacao = ctime(&now);

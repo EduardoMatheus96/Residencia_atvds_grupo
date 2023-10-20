@@ -8,8 +8,7 @@ using namespace std;
 class Tarefa
 {
 public:
-    Tarefa(const string &descricao, bool concluida = false)
-        : descricao(descricao), concluida(concluida) {}
+    Tarefa(const string &descricao, bool concluida = false): descricao(descricao), concluida(concluida) {}
 
     void marcarConcluida()
     {
